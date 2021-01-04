@@ -31,18 +31,7 @@
             <span class="color-desc margin-left-5">Goods Name</span>
             <input name="name" required class="layui-input" placeholder="请输入商品名称" value="{$vo.name|default=''}">
         </label>
-        <label class="layui-form-item block relative">
-            <span class="color-green font-w7 label-required-prev">邮费模板</span>
-            <span class="color-desc margin-left-5">Truck Template</span>
-            <select class="layui-select" name="truck_tcode" lay-search>
-                <option value="">--- 包 邮 ---</option>
-                {foreach $vo.truck_items as $truck}{if isset($vo.truck_tcode) and $vo.truck_tcode eq $truck.code}
-                <option selected value="{$truck.code}">{$truck.code} - {$truck.name|default=''}</option>
-                {else}
-                <option value="{$truck.code}">{$truck.code} - {$truck.name|default=''}</option>
-                {/if}{/foreach}
-            </select>
-        </label>
+
         <div class="layui-form-item">
             <span class="color-green font-w7 label-required-prev">商品图片及轮播展示图片</span>
             <table class="layui-table">
@@ -64,83 +53,7 @@
                 </thead>
             </table>
         </div>
-        <div class="layui-form-item">
-            <span class="color-green font-w7 label-required-prev">商品规格及商品SKU绑定<span class="color-red font-s12">（规格填写后不允许再次修改）</span></span>
-            <div ng-repeat="x in specs track by $index" style="display:none" class="margin-bottom-10" ng-class="{true:'layui-show'}[mode==='add'&&specs.length>0]">
-                <div class="goods-spec-box padding-10 margin-0 relative" style="background:#ddd">
-                    <span class="text-center goods-spec-title">分组</span>
-                    <label class="label-required-null inline-block"><input ng-blur="x.name=trimSpace(x.name)" ng-model="x.name" required placeholder="请输入分组名称"></label>
-                    <div class="pull-right">
-                        <a class="layui-btn layui-btn-sm layui-btn-primary goods-spec-btn" ng-click="addSpecVal(x.list)">增加</a>
-                        <a class="layui-btn layui-btn-sm layui-btn-primary goods-spec-btn" ng-class="{false:'layui-bg-gray'}[$index>0]" ng-click="upSpecRow(specs,$index)">上移</a>
-                        <a class="layui-btn layui-btn-sm layui-btn-primary goods-spec-btn" ng-class="{false:'layui-bg-gray'}[$index<specs.length-1]" ng-click="dnSpecRow(specs,$index)">下移</a>
-                        <a class="layui-btn layui-btn-sm layui-btn-primary goods-spec-btn" ng-click="delSpecRow(specs,$index)" ng-if="specs.length>1">删除</a>
-                    </div>
-                </div>
-                <div class="goods-spec-box padding-10 margin-0 layui-bg-gray block relative" ng-if="x.list && x.list.length > 0">
-                    <label class="label-required-null inline-block margin-right-10 margin-bottom-5 relative nowrap" ng-repeat="xx in x.list">
-                        <input type="checkbox" lay-ignore ng-model="xx.check" ng-click="xx.check=checkListChecked(x.list,$event.target.checked)">
-                        <input type="text" ng-blur="xx.name=trimSpace(xx.name)" ng-model="xx.name" ng-keyup="xx.name=$event.target.value" required placeholder="请输入规格">
-                        <a ng-if="x.list.length>1" ng-click="x.list=delSpecVal(x.list,$index)" class="layui-icon layui-icon-close font-s12 goods-spec-close"></a>
-                    </label>
-                </div>
-            </div>
-            <div ng-if="mode==='add'">
-                <a ng-if="specs.length<3" class="layui-btn layui-btn-sm layui-btn-primary" ng-click="addSpecRow(specs)">增加分组</a>
-                <p>请完成属性修改后再编辑下面的规格信息，否则规格数据会丢失！！！</p>
-            </div>
-            <table class="layui-table margin-top-10">
-                <thead>
-                <tr>
-                    <th ng-repeat="x in navas track by $index" class="nowrap" ng-bind="x"></th>
-                    <th width="12%" class="text-center nowrap">商品SKU <a ng-click="batchSet('sku',null)" data-tips-text="批量设置" class="layui-icon">&#xe63c;</a></th>
-                    <th width="10%" class="text-center nowrap">市场价格 <a ng-click="batchSet('market',2)" data-tips-text="批量设置" class="layui-icon">&#xe63c;</a></th>
-                    <th width="10%" class="text-center nowrap">销售价格 <a ng-click="batchSet('selling',2)" data-tips-text="批量设置" class="layui-icon">&#xe63c;</a></th>
-                    <th width="10%" class="text-center nowrap">虚拟销量 <a ng-click="batchSet('virtual',0)" data-tips-text="批量设置" class="layui-icon">&#xe63c;</a></th>
-                    <th width="10%" class="text-center nowrap">快递计件 <a ng-click="batchSet('express',0)" data-tips-text="批量设置" class="layui-icon">&#xe63c;</a></th>
-                    <th width="8%" class="text-center nowrap">销售状态</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="rows in items track by $index">
-                    <td class="layui-bg-gray" ng-if="td.show" ng-repeat="td in rows" ng-bind="td.name"></td>
-                    <td class="padding-0">
-                        <label class="padding-0 margin-0">
-                            <input ng-blur="rows[0].sku=setValue(rows[0].key,'sku',$event.target.value)" class="layui-input border-0 padding-left-0 text-center" ng-model="rows[0].sku">
-                        </label>
-                    </td>
-                    <td class="padding-0">
-                        <label class="padding-0 margin-0">
-                            <input ng-blur="rows[0].market=setValue(rows[0].key,'market',$event.target.value,'(parseFloat(_)||0).toFixed(2)')" class="layui-input border-0 padding-left-0 text-center" ng-model="rows[0].market">
-                        </label>
-                    </td>
-                    <td class="padding-0">
-                        <label class="padding-0 margin-0">
-                            <input ng-blur="rows[0].selling=setValue(rows[0].key,'selling',$event.target.value,'(parseFloat(_)||0).toFixed(2)')" class="layui-input border-0 padding-left-0 text-center" ng-model="rows[0].selling">
-                        </label>
-                    </td>
-                    <td class="padding-0">
-                        <label class="padding-0 margin-0">
-                            <input ng-blur="rows[0].virtual=setValue(rows[0].key,'virtual',$event.target.value,'(parseInt(_)||0)')" class="layui-input border-0 padding-left-0 text-center" ng-model="rows[0].virtual">
-                        </label>
-                    </td>
-                    <td class="padding-0">
-                        <label class="padding-0 margin-0">
-                            <input ng-blur="rows[0].express=setValue(rows[0].key,'express',$event.target.value,'(parseInt(_)||0)')" class="layui-input border-0 padding-left-0 text-center" ng-model="rows[0].express">
-                        </label>
-                    </td>
-                    <td class="text-center layui-bg-gray">
-                        <label class="think-checkbox margin-0 full-width full-height block"><input lay-ignore type="checkbox" ng-model="rows[0].status"></label>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <p class="color-desc">请注意商品的SKU尽量不要重复，也不能产生订单后再修改，否则会造成订单数据无法关联！</p>
-            <label class="layui-hide">
-                <textarea class="layui-textarea" name="data_specs">{{specs}}</textarea>
-                <textarea class="layui-textarea" name="data_items">{{items}}</textarea>
-            </label>
-        </div>
+       
         <label class="layui-form-item block">
             <span class="font-w7 color-green">商品简介描述</span>
             <textarea class="layui-textarea" placeholder="请输入商品简介描述" name="remark">{$vo.remark|default=''|raw}</textarea>

@@ -34,4 +34,9 @@ return [
     'error_message'    => '页面错误！请稍后再试～',
     // 调试模式异常页面的模板文件
     'exception_tmpl'   => app()->getBasePath() . 'admin/view/error.tpl',
+
+    // 应用调试模式
+    'app_debug' => true,
+    // 应用Trace调试
+    'app_trace' => true,
 ];

@@ -1,0 +1,243 @@
+{extend name="common/common"}
+
+{block name="button"}
+<!--{if auth("add")}-->
+<button data-modal='{:url("add")}' data-title="添加标签" class='layui-btn layui-btn-sm layui-btn-primary'>添加标签</button>
+<!--{/if}-->
+<!--{if auth("remove")}-->
+<button data-action='{:url("remove")}' data-rule="id#{key}" data-confirm="确定要删除这些标签吗？" class='layui-btn layui-btn-sm layui-btn-primary'>删除标签</button>
+<!--{/if}-->
+{/block}
+
+{block name='content'}
+<div class="outbox">
+    <!-- 搜索栏 -->
+    <div class="searchbox">
+        <a href="#">
+            <input class="searinp" type="text" placeholder="请输入搜索内容" disabled="disabled" />
+            <img class="searchimg" src="img/sou.png" />
+        </a>
+    </div>
+    <!-- 分类 -->
+    <div class="fenlei">
+        <div class="fenleilibox">
+            <div class="fenleismabox">
+                <a href="#">
+
+                    <img src="img/01.png">
+                    <p class="setp">精选</p>
+                </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/02.png">
+                <p class="setp">数学</p>
+            </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/03.png">
+                <p class="setp">语文</p>
+            </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/04.png">
+                <p class="setp">英语</p>
+            </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/05.png">
+                <p class="setp">特长</p>
+            </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="fenleilibox">
+            <div class="fenleismabox"><a href="#">
+                <img src="img/06.png">
+                <p class="setp">精选</p>
+            </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/07.png">
+                <p class="setp">在线课</p>
+            </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/08.png">
+                <p class="setp">一对一</p>
+            </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/09.png">
+                <p class="setp">学校</p>
+            </a>
+            </div>
+            <div class="fenleismabox"><a href="#">
+                <img src="img/10.png">
+                <p class="setp">报名</p>
+            </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- 轮播 -->
+    <div class="swiperbox">
+        <div class="swiper-container swiset">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <a href="#"><img class="swiper_img" src="img/swiper.png" /></a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="#"><img class="swiper_img" src="img/swiper.png" /></a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="#"><img class="swiper_img" src="img/swiper.png" /></a>
+                </li>
+            </ul>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <!-- 通知轮播 -->
+    <div class="news">
+        <div class="t_news">
+            <ul class="news_li">
+                <li>1 我爱北京天安门</li>
+                <li>2 我爱北京天安门</li>
+                <li>3 我爱北京天安门</li>
+                <li>4 我爱北京天安门</li>
+                <li>5 我爱北京天安门</li>
+            </ul>
+            <ul class="swap"></ul>
+            <img class="sound" src="img/sound.png">
+        </div>
+    </div>
+    <!-- 图片广告 -->
+    <div class="picadbox">
+        <div class="picadleftbox"><a href="#"><img src="img/big01.jpg"></a></div>
+        <div class="picadrightbox">
+            <div class="picadrtop"><a href="#"><img src="img/big02.jpg"></a></div>
+            <div class="picadrbot"><a href="#"><img src="img/big03.jpg"></a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- banner图 -->
+    <div class="bannerbox">
+        <div class="bannerboxinner"><img src="img/banner.jpg"></div>
+    </div>
+    <!-- 学校介绍 -->
+    <div class="schoolbox">
+        <div class="schoolboxinner">
+            <p class="schtitle">名牌私立学校</p>
+            <div class="bookpicbox"><img class="bookpic" src="img/book.jpg"></div>
+            <p class="schcon">学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授</p>
+        </div>
+    </div>
+    <p class="titlep">本校热门课程</p>
+    <!-- 课程推荐 -->
+    <div class="classbox">
+        <div class="classboxinner">
+            <div class="classlibox">
+                <a href="#">
+                    <div class="classsmaboxl">
+                        <img src="img/classpic.jpg">
+                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
+                        <p class="classjj">快速突破</p>
+                        <p class="classpri">￥<span>99</span></p>
+                        <p class="classyy">已预约: <span>3</span></p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="classsmaboxr">
+                        <img src="img/classpic.jpg">
+                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
+                        <p class="classjj">快速突破</p>
+                        <p class="classpri">￥<span>99</span></p>
+                        <p class="classyy">已预约: <span>3</span></p>
+                    </div>
+                </a>
+                <div class="clear"></div>
+            </div>
+            <div class="classlibox">
+                <a href="#">
+                    <div class="classsmaboxl">
+                        <img src="img/classpic.jpg">
+                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
+                        <p class="classjj">快速突破</p>
+                        <p class="classpri">￥<span>99</span></p>
+                        <p class="classyy">已预约: <span>3</span></p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="classsmaboxr">
+                        <img src="img/classpic.jpg">
+                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
+                        <p class="classjj">快速突破</p>
+                        <p class="classpri">￥<span>99</span></p>
+                        <p class="classyy">已预约: <span>3</span></p>
+                    </div>
+                </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 技术支持 -->
+    <div class="jszc">
+        <p>遛弯小分队提供技术支持</p>
+    </div>
+</div>
+<!-- 底部菜单栏 -->
+<div class="foot_tap">
+    <div class="topli"><img class="footimg" src="img/tab11.png" />
+        <p class="footp footpacti">首页</p>
+    </div>
+    <div class="topli"><img class="footimg" src="img/tab2.png" />
+        <p class="footp">商品</p>
+    </div>
+    <div class="topli"><img class="footimg" src="img/tab3.png" />
+        <p class="footp">购物袋</p>
+    </div>
+    <div class="topli"><img class="footimg" src="img/tab4.png" />
+        <p class="footp">我的</p>
+    </div>
+</div>
+
+{/block}
+
+<script type="text/javascript">
+    $(function() {
+        // 轮播图
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: 3000,
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            loop: true,
+        })
+        // 文字通知轮播
+        $('.swap').html($('.news_li').html());
+        x = $('.news_li');
+        y = $('.swap');
+        h = $('.news_li li').length * 20; //20为每个li的高度
+        var hh = $('.news_li li').length;
+        if (hh > 1)
+        //setTimeout(b,3000);//滚动间隔时间 现在是3秒
+            b();
+        b();
+
+        function b() {
+            t = parseInt(x.css('top'));
+            //alert(t)
+            y.css('top', '20px');
+            x.animate({
+                top: t - 20 + 'px'
+            }, 'slow'); //20为每个li的高度
+            if (Math.abs(t) == h - 20) { //20为每个li的高度
+                y.animate({
+                    top: '0px'
+                }, 'slow');
+                z = x;
+                x = y;
+                y = z;
+            }
+            setTimeout(b, 3000); //滚动间隔时间 现在是3秒
+        }
+    })
+</script>
