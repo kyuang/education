@@ -23,7 +23,7 @@ class ClassNotFoundException extends RuntimeException implements NotFoundExcepti
     {
         $this->message = $message;
         $this->class   = $class;
-
+        dump($class);
         parent::__construct($message, 0, $previous);
     }
 

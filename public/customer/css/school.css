@@ -1,0 +1,175 @@
+
+.outbox{
+	background-color: #fff;
+}
+/* 轮播 */
+.swiperbox {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.swiset {
+	width: 100%;
+}
+
+.swiper_img {
+	width: 100%;
+}
+/* 学校介绍 */
+.schoolbox{
+	width: 100%;
+	padding: 0 0.38rem;
+	box-sizing: border-box;
+	margin-top: 0.5rem;
+}
+.schoolboxinner{
+	width: 100%;
+	border-radius: 0.08rem;
+	box-sizing: border-box;
+	box-shadow:  0 0 0.2rem #c4e7b9;
+	padding: 0 0.4rem;
+	padding-bottom: 0.3rem;
+}
+.schtitle{
+	font-size: 0.32rem;
+	width: 100%;
+	text-align: center;
+	color: #444;
+	line-height: 0.85rem;
+}
+.bookpicbox{
+	width: 100%;
+	font-size: 0;
+	text-align: center;
+}
+.bookpic{
+	width: 1.8rem;
+}
+.schcon{
+	font-size: 0.20rem;
+	margin-top: 0.15rem;
+	line-height: 0.4rem;
+	color: #9e9e9e;
+}
+.titlep{
+	width: 100%;
+	padding-left: 0.4rem;
+	box-sizing: border-box;
+	font-size: 0.28rem;
+	color: #8a8a8a;
+	margin-top: 0.8rem;
+}
+.namecard{
+	width: 100%;
+	padding: 0 0.38rem;
+	box-sizing: border-box;
+	margin-top: 0.5rem;
+}
+.namecardinner{
+	width: 100%;
+}
+
+.namecardp{
+	color: #222222;
+	font-size: 0.3rem;
+}
+.namecardlibox{
+	width: 100%;
+	padding: 0.3rem 0;
+	box-sizing: border-box;
+	border-bottom: 1px solid #eee;
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+.namecardlibox:last-child{
+	border-bottom: none;
+}
+.nameimgbox{
+	width: 1.24rem;
+	height: 1.24rem;
+	overflow: hidden;
+	border-radius: 0.05rem;
+	float: left;
+	margin-right:0.3rem;
+}
+.nameimgbox img{
+	width: 100%;
+	height: 100%;
+}
+.namemiddbox{
+		float: left;
+			width: 4.2rem;
+}
+.teaname{
+	font-size: 0.26rem;
+	color: #222;
+	line-height: 0.6rem;
+	
+}
+.goodtea{
+	font-size: 0.22rem;
+	color: #7d7d7d;
+}
+.telimg{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 0.48rem;
+	float: left;
+	display: block;
+	height: 0.52rem;
+	bottom: 0;
+	margin: auto 0;
+	
+}
+/* 技术支持 */
+.jszc{
+	width: 100%;
+	height: 2.6rem;
+	background-color: #EEE;
+}
+.jszc p{
+	width: 100%;
+	padding-top: 0.6rem;
+	font-size: 0.26rem;
+	text-align: center;
+	color: #c1c1c1;
+}
+
+
+/*底部切换*/
+.foot_tap {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: 0 auto;
+	height: 1rem;
+	max-width: 7.5rem;
+	width: 100%;
+	border-top: 0.01rem solid #eee;
+	display: flex;
+	background-color: #2b9902;
+	z-index: 999;
+	font-size: 0.2rem;
+}
+
+.topli {
+	flex: 1;
+	text-align: center;
+}
+
+.footimg {
+	width: 0.4rem;
+	padding-top: 0.15rem;
+
+}
+
+.footp {
+	color: #fff;
+}
+
+.footpacti {
+	color: #e5dc11;
+}

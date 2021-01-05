@@ -1,0 +1,51 @@
+.quelistoutbox{
+	background-color: #fff;
+	width: 100%;
+	padding: 0.5rem 0.4rem;
+	box-sizing: border-box;
+}
+.quelisttibox{
+	width: 2rem;
+	font-size: 0.3rem;
+	line-height: 0.66rem;
+	height: 0.66rem;
+	border-radius: 0.33rem;
+	background-color: #56bb37;
+	text-align: center;
+	color: #fff;
+}
+.quelista{
+	display: block;
+	color: #757575;
+	background-color: #f1f1f1;
+	width: 100%;
+	box-sizing: border-box;
+	line-height: 0.56rem;
+	font-size: 0.26rem;
+	padding-left: 0.2rem;
+	padding-right: 0.2rem;
+	border-radius: 0.06rem;
+	margin-top: 0.3rem;
+}
+
+/* 技术支持 */
+.datijszc{
+	width: 100%;
+	height: 1.6rem;
+	background-color: #EEE;
+}
+.datijszc p{
+	width: 100%;
+	padding-top: 0.6rem;
+	font-size: 0.26rem;
+	text-align: center;
+	color: #c1c1c1;
+}
+
+
+/* 留言页面 */
+.liuyana{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}

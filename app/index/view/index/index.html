@@ -1,14 +1,5 @@
 {extend name="common/common"}
 
-{block name="button"}
-<!--{if auth("add")}-->
-<button data-modal='{:url("add")}' data-title="添加标签" class='layui-btn layui-btn-sm layui-btn-primary'>添加标签</button>
-<!--{/if}-->
-<!--{if auth("remove")}-->
-<button data-action='{:url("remove")}' data-rule="id#{key}" data-confirm="确定要删除这些标签吗？" class='layui-btn layui-btn-sm layui-btn-primary'>删除标签</button>
-<!--{/if}-->
-{/block}
-
 {block name='content'}
 <div class="outbox">
     <!-- 搜索栏 -->
@@ -185,20 +176,7 @@
     </div>
 </div>
 <!-- 底部菜单栏 -->
-<div class="foot_tap">
-    <div class="topli"><img class="footimg" src="img/tab11.png" />
-        <p class="footp footpacti">首页</p>
-    </div>
-    <div class="topli"><img class="footimg" src="img/tab2.png" />
-        <p class="footp">商品</p>
-    </div>
-    <div class="topli"><img class="footimg" src="img/tab3.png" />
-        <p class="footp">购物袋</p>
-    </div>
-    <div class="topli"><img class="footimg" src="img/tab4.png" />
-        <p class="footp">我的</p>
-    </div>
-</div>
+
 
 {/block}
 

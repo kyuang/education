@@ -1,0 +1,47 @@
+
+.success_imgbox {
+	width: 100%;
+	text-align: center;
+	padding-top: 0.78rem;
+}
+
+.success_img {
+	width: 1.3rem;
+}
+
+.zf_pt {
+	color: #4a4a4a;
+	font-size: 0.36rem;
+	text-align: center;
+	margin-top: 0.5rem;
+}
+
+.zf_pb {
+	color: #909090;
+	text-align: center;
+	margin-top: 0.28rem;
+	font-size: 0.28rem;
+}
+
+.zf_allbtn {
+	width: 100%;
+	margin-top: 0.9rem;
+}
+
+.zf_allbtnl {
+	width: 100%;
+	padding:0 0.33rem;
+	box-sizing: border-box;
+}
+
+.zf_dirbtn {
+	color: #fff;
+	font-size: 0.3rem;
+	width: 100%;
+	text-align: center;
+	height: 0.7rem;
+	background-color: #56bb37;
+	line-height: 0.7rem;
+	border: 0.01rem solid #ddd;
+	border-radius: 0.1rem;
+}

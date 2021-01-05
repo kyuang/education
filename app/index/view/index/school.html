@@ -1,0 +1,70 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/school.css">
+{/block}
+{block name='content'}
+<div class="outbox">
+	<!-- 头部轮播 -->
+	<div class="swiperbox">
+		<div class="swiper-container swiset">
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide">
+					<a href="#"><img class="swiper_img" src="img/school_swipic.jpg" /></a>
+				</li>
+				<li class="swiper-slide">
+					<a href="#"><img class="swiper_img" src="img/school_swipic.jpg" /></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 学校介绍 -->
+	<div class="schoolbox">
+		<div class="schoolboxinner">
+			<p class="schtitle">名牌私立学校</p>
+			<div class="bookpicbox"><img class="bookpic" src="img/book.jpg"></div>
+			<p class="schcon">学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授</p>
+		</div>
+	</div>
+	<!-- 名片列表 -->
+	<div class="namecard">
+		<div class="namecardinner">
+			<p class="namecardp">名片列表</p>
+			<div href="#" class="namecardlibox">
+				<a href="#">
+					<div class="nameimgbox"><img src="img/tximg.jpg"></div>
+					<div class="namemiddbox">
+						<p class="teaname">吴老师</p>
+						<p class="goodtea">2018优秀教师</p>
+					</div>
+				</a>
+				<a href="#" class="telimg"><img src="img/tel.png"></a>
+				<div class="clear"></div>
+			</div><div href="#" class="namecardlibox">
+			<a href="#">
+				<div class="nameimgbox"><img src="img/tximg.jpg"></div>
+				<div class="namemiddbox">
+					<p class="teaname">吴老师</p>
+					<p class="goodtea">2018优秀教师</p>
+				</div>
+			</a>
+			<a href="#" class="telimg"><img src="img/tel.png"></a>
+			<div class="clear"></div>
+		</div>
+		</div>
+	</div>
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript">
+	$(function() {
+		// 轮播图
+		var mySwiper = new Swiper('.swiper-container', {
+			autoplay: 3000,
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			loop: true,
+		})
+
+	})
+</script>
+{/block}

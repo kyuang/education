@@ -1,0 +1,110 @@
+.datioutbox{
+	background-color: #fff;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+}
+.datititle{
+	width: 100%;
+	text-align: center;
+	font-size: 0.3rem;
+	color: #000000;
+	line-height: 0.8rem;
+	font-weight: bold;
+}
+.datiformbox{
+	width: 100%;
+	padding: 0 0.3rem;
+	box-sizing: border-box;
+}
+.datiform{
+	width: 100%;
+	height: 100% ;
+}
+.firque{
+	width: 100%;
+	margin-bottom: 0.5rem;
+	border-top: 1px solid #eee;
+	padding-top: 0.5rem;
+}
+.firque:first-child{
+	border-top:none;
+}
+.queli{
+	font-size: 0.26rem;
+	color: #333333;
+	width: 80%;
+	margin: 0 auto;
+	line-height: 0.4rem;
+	margin-bottom: 0.2rem;
+	
+}
+.bigspanfont{
+	font-size: 0.34rem;
+	color: #000000;
+}
+.qeliint{
+	display: block;
+	width: 100%;
+	
+}
+.quelibox{
+	width: 85%;
+	padding: 0.1rem 0.2rem 0.1rem 0.4rem;
+	margin: 0 auto;
+	background-color: #eee;
+	margin-bottom: 0.1rem;
+	border-radius: 0.5rem;	
+	color: #4a4a4a;
+	
+}
+.quelibox label{
+	display: block;
+	font-size: 0.24rem;
+	
+}
+.spanlab{
+	display: block;
+	width: 90%;
+	word-wrap: break-word;
+	line-height: 0.4rem;
+}
+.spans{
+	font-size: 0.32rem;
+}
+.quecheked{
+	background-color: #56bb37;
+	color: #fff;
+}
+.anwbox{
+	font-size: 0.22rem;
+	color: red;
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: 0.5rem;
+	display: none;
+}
+.tijiaobtn{
+	width: 100%;
+	color: #FFFFFF;
+	background-color:#56bb37 ;
+	font-size: 0.32rem;
+	text-align: center;
+	line-height: 0.7rem;
+	height: 0.7rem;
+	border-radius: 0.35rem;
+	margin-top: 0.5rem;
+}
+
+/* 技术支持 */
+.datijszc{
+	width: 100%;
+	height: 1.6rem;
+	background-color: #EEE;
+}
+.datijszc p{
+	width: 100%;
+	padding-top: 0.6rem;
+	font-size: 0.26rem;
+	text-align: center;
+	color: #c1c1c1;
+}

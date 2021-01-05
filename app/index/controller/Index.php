@@ -28,4 +28,59 @@ class Index extends Controller
         $this->assign('list',[]);
         $this->fetch();
     }
+
+
+
+    public function kecheng()
+    {
+        $this->title = '课程';
+        $this->assign('list',[]);
+        $this->fetch('list');
+    }
+
+    public function online()
+    {
+        $this->title = '本校概况';
+        $this->assign('list',[]);
+        $this->fetch('online');
+    }
+
+
+    public function school()
+    {
+        $this->title = '本校概况';
+        $this->assign('list',[]);
+        $this->fetch('school');
+    }
+
+    public function search()
+    {
+        $this->title = '搜索';
+        $this->assign('list',[]);
+        $this->fetch('search');
+    }
+
+
+    public function dati()
+    {
+        $this->title = '答题';
+        $this->assign('list',[]);
+        $this->fetch('dati');
+    }
+
+
+    public function details()
+    {
+        $this->title = '明细';
+        $this->assign('list',[]);
+        $this->fetch('details');
+    }
+
+
+    public function card()
+    {
+        $this->title = '名片';
+        $this->assign('list',[]);
+        $this->fetch('card');
+    }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>{block name="title"}{$title|default=''}{if !empty($title)} · {/if}{:sysconf('site_name')}{/block}</title>
+    <title>{block name="title"}{$title|default=''}{/block}</title>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta name="format-detection" content="telephone=no">
@@ -10,10 +10,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=0.4">
     <link rel="shortcut icon" href="{:sysconf('site_icon')}">
-    <link rel="stylesheet" type="text/css" href="__ROOT__/customer/public/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="__ROOT__/customer/public/css/swiper.min.css" />
-    <link rel="stylesheet" type="text/css" href="__ROOT__/customer/index/css/index.css">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/index.css">
 
+    {block name="header"}{/block}
     {block name="style"}{/block}
 </head>
 <body class="layui-layout-body">
@@ -21,13 +22,31 @@
 <div class="layui-layout layui-layout-admin layui-layout-left-hide">
     <!-- 主体内容 开始 -->
     <div class="layui-body layui-bg-gray">{block name='content'}{/block}</div>
+
+    <div class="jszc">
+        <p>遛弯小分队提供技术支持</p>
+    </div>
+
     <!-- 主体内容 结束 -->
+    <div class="foot_tap">
+        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab11.png" />
+            <p class="footp footpacti">首页</p>
+        </div>
+        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab2.png" />
+            <p class="footp">商品</p>
+        </div>
+        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab3.png" />
+            <p class="footp">购物袋</p>
+        </div>
+        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab4.png" />
+            <p class="footp">我的</p>
+        </div>
+    </div>
 </div>
 {/block}
-<script src="__ROOT__/customer/public/js/jquery2.14.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="__ROOT__/customer/public/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="__ROOT__/customer/public/js/public.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="__ROOT__/customer/js/jquery2.14.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__ROOT__/customer/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__ROOT__/customer/js/public.js" type="text/javascript" charset="utf-8"></script>
 
 {block name='script'}{/block}
 </body>

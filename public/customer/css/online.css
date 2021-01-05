@@ -1,0 +1,184 @@
+
+.outbox{
+	background-color: #fff;
+}
+
+.adrtel{
+	padding: 0 0.2rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.3rem;
+	box-sizing: border-box;
+	width: 100%;
+}
+.touch{
+	font-size: 0.3rem;
+	color: #333333;
+	margin-bottom: 0.15rem;
+}
+.ontel{
+	font-size: 0.22rem;
+	color: #999999;
+	line-height: 0.45rem;
+}
+.onadr{
+	font-size: 0.22rem;
+	color: #999999;
+	line-height: 0.45rem;
+}
+/* 技术支持 */
+.jszc{
+	width: 100%;
+	height: 2.6rem;
+	background-color: #EEE;
+}
+.jszc p{
+	width: 100%;
+	padding-top: 0.6rem;
+	font-size: 0.26rem;
+	text-align: center;
+	color: #c1c1c1;
+}
+/* 表单 */
+
+.formbox{
+	padding: 0.15rem 0.2rem;
+	box-sizing: border-box;
+	width: 100%;
+}
+.formti{
+	font-size: 0.28rem;
+	color: #333;
+	line-height: 0.65rem;
+	margin-bottom: 0.2rem;
+}
+
+.formliboxp{
+	line-height: 0.4rem;
+	font-size: 0.26rem;
+	color: #333;
+}
+.redstar{
+	color: red;
+	font-size: 0.4rem;
+	vertical-align: middle;
+}
+.formliinp{
+	margin-top: 0.15rem;
+	width: 100%;
+	border-radius: 0.05rem;
+	color: #515151;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	font-size: 0.24rem;
+	background-color: #f5f5f5;
+	padding-left: 0.2rem;
+	box-sizing: border-box;
+	display: inline-block;
+}
+.formliinp::-webkit-input-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+
+.formliinp::-ms-input-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+
+.formliinp:-moz-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+
+.formliinp::-moz-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+.liuyan{
+	margin-top: 0.15rem;
+	width: 100%;
+	resize: none;
+	height: 3rem;
+	border-radius: 0.05rem;
+	color: #515151;
+	font-size: 0.24rem;
+	background-color: #f5f5f5;
+	padding-left: 0.2rem;
+	box-sizing: border-box;
+	display: inline-block;
+	border: none;
+	outline: none;
+	padding-top: 0.2rem;
+	line-height: 0.4rem;
+}
+
+
+.liuyan::-webkit-input-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+
+.liuyan::-ms-input-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+
+.liuyan:-moz-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+
+.liuyan::-moz-placeholder {
+	color: #d1d1d1;
+	font-size: 0.24rem;
+}
+
+.tijiao{
+	width: 100%;
+	margin: 0 auto;
+	height: 0.9rem;
+	line-height: 0.9rem;
+	font-size: 0.28rem;
+	color: #fff;
+	background-color: #37be01;
+	border-radius: 0.1rem;
+}
+
+
+
+
+/*底部切换*/
+.foot_tap {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: 0 auto;
+	height: 1rem;
+	max-width: 7.5rem;
+	width: 100%;
+	border-top: 0.01rem solid #eee;
+	display: flex;
+	background-color: #2b9902;
+	z-index: 999;
+	font-size: 0.2rem;
+}
+
+.topli {
+	flex: 1;
+	text-align: center;
+}
+
+.footimg {
+	width: 0.4rem;
+	padding-top: 0.15rem;
+
+}
+
+.footp {
+	color: #fff;
+}
+
+.footpacti {
+	color: #e5dc11;
+}

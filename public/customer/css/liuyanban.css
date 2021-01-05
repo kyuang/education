@@ -1,0 +1,68 @@
+.liuyanbanbox{
+	width: 100%;
+	background-color: #FFFFFF;
+	
+}
+.liuyanp{
+	font-size: 0.32rem;
+	width: 100%;
+	text-align: center;
+	color: #000000;
+	padding: 0.5rem 0;
+}
+.liuyanid{
+	font-size: 0.26rem;
+	width: 100%;
+	padding:0.3rem 1rem;
+	box-sizing: border-box;
+	color: #2A2A2A;
+}
+.liuyanxq{
+	width: 70%;
+	margin: 0 auto;
+	border: 1px solid #eee;
+	padding: 0.2rem;
+	box-sizing: border-box;
+	font-size: 0.24rem;
+}
+.liuyanxqp{
+	line-height: 0.5rem;
+	color: #4a4a4a;
+}
+.liuyanpage{
+	width: 100%;
+	padding: 0.8rem;
+	box-sizing: border-box;
+	font-size: 0;
+	overflow: hidden;
+	font-size: 0.26rem;
+}
+.liuyanpage a{
+	padding: 0.08rem 0.16rem;
+	display: block;
+	border-radius: 0.1rem;
+}
+.liuyanpre{
+	float: left;
+	background-color: #e8e8e8;
+	color: #4f4f4f;
+}
+.liuyannext{
+	float: right;
+	background-color: #e8e8e8;
+	color: #4f4f4f;
+}
+
+/* 技术支持 */
+.jszc{
+	width: 100%;
+	height: 2.6rem;
+	background-color: #EEE;
+}
+.jszc p{
+	width: 100%;
+	padding-top: 0.6rem;
+	font-size: 0.26rem;
+	text-align: center;
+	color: #c1c1c1;
+}
