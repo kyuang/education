@@ -155,31 +155,12 @@ class ShopGoods extends Controller
         if ($this->request->isGet()) {
             $data['mark'] = str2arr($data['mark'] ?? '');
             [$this->marks, $this->cates] = [GoodsService::instance()->getMarkList(), GoodsService::instance()->getCateList('arr2table')];
-            $fields = 'goods_sku `sku`,goods_code,goods_spec `key`,price_selling `selling`,price_market `market`,number_virtual `virtual`,number_express `express`,status';
-            $data['data_items'] = json_encode($this->app->db->name('ShopGoodsItem')->where(['goods_code' => $data['code']])->column($fields, 'goods_spec'), JSON_UNESCAPED_UNICODE);
             $data['truck_items'] = $this->app->db->name('ShopTruckTemplate')->where(['status' => 1, 'deleted' => 0])->order('sort desc,id desc')->column('code,name');
         } elseif ($this->request->isPost()) {
             if (empty($data['cover'])) $this->error('商品图片不能为空！');
             if (empty($data['slider'])) $this->error('轮播图不能为空！');
             // 商品规格保存
             $data['mark'] = arr2str($data['mark'] ?? []);
-            [$count, $items] = [0, json_decode($data['data_items'], true)];
-            foreach ($items as $item) {
-                $count += intval($item[0]['status']);
-                if (empty($data['price_market'])) $data['price_market'] = $item[0]['market'];
-            }
-            if (empty($count)) $this->error('无效的的商品价格信息！');
-            $this->app->db->name('ShopGoodsItem')->where(['goods_code' => $data['code']])->update(['status' => 0]);
-            foreach ($items as $item) data_save('ShopGoodsItem', [
-                'goods_code'     => $data['code'],
-                'goods_sku'      => $item[0]['sku'],
-                'goods_spec'     => $item[0]['key'],
-                'price_market'   => $item[0]['market'],
-                'price_selling'  => $item[0]['selling'],
-                'number_virtual' => $item[0]['virtual'],
-                'number_express' => $item[0]['express'],
-                'status'         => $item[0]['status'] ? 1 : 0,
-            ], 'goods_spec', ['goods_code' => $data['code']]);
         }
     }
 
