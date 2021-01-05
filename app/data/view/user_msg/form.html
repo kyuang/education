@@ -1,0 +1,25 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body padding-left-40">
+        <div class="layui-form-item relative block">
+            <span class="color-green font-w7">留言内容</span>
+            <!--<span class="color-desc margin-left-5">Mark Remark</span>-->
+            <label class="relative block">
+                <textarea class="layui-textarea" placeholder="用户留言内容" name="content" readonly="readonly" disabled="disabled">{$vo.content|default=''}</textarea>
+            </label>
+        </div>
+        <label class="layui-form-item relative block">
+            <span class="color-green font-w7">回复内容</span>
+            <!--<span class="color-desc margin-left-5">Mark Name</span>-->
+            <textarea class="layui-textarea" required placeholder="请输入回复内容" name="reply">{$vo.reply|default=''}</textarea>
+            <span class="help-block"><b>必填，</b>请填写回复内容</span>
+        </label>
+    </div>
+    <div class="hr-line-dashed"></div>
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <div class="layui-form-item text-center">
+        {empty name='vo.reply'}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+        {/empty}
+    </div>
+</form>

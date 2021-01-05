@@ -39,4 +39,6 @@ return [
     'app_debug' => true,
     // 应用Trace调试
     'app_trace' => true,
+    //是否开发测试
+    'app_local' => true,
 ];

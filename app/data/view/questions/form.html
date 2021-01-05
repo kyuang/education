@@ -1,0 +1,118 @@
+<form class="layui-form layui-card" action="{:request()->url()}" data-auto="true" method="post" autocomplete="off">
+    <div class="layui-card-body padding-left-40">
+        <label class="layui-form-item relative block">
+            <span class="color-green font-w7">题目</span>
+            <span class="color-desc margin-left-5">Mark Name</span>
+            <input class="layui-input" required placeholder="请输入题目" name="question" value="{$vo.question|default=''}"/>
+            <span class="help-block"><b>必填，</b>请填写题目（如：1+1=？），建议字符不要太长，一般小于200</span>
+        </label>
+        <div class="layui-form-item relative block label-required-prev">
+            <span class="color-green font-w7">题目</span>
+            <span class="color-desc margin-left-5">Mark Name &nbsp;&nbsp;&nbsp;</span>
+            <button class="layui-btn layui-btn-sm" type="button" id="add_option">添加选项</button>
+            <div style="border: 1px solid #ccc;margin-top: 3px;" class="option_div">
+                {empty name='$vo.options'}
+                <div class="layui-input-block js-option_div" style="margin-left: 0px;border:5px solid #FFF;">
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input lay-filter="js-answers" class="js-answers" type="checkbox" name="answers" lay-skin="primary" title="是否正确答案" checked="">
+                        <!--<input type="radio" name="answers_radio[]" value="设置为正确答案" title="设置为正确答案" checked="">-->
+                    </div>
+                    <div class="layui-input-inline" style="width: 450px;">
+                        <input type="text" name="answers_val[]" placeholder="请输入答案" autocomplete="off" class="layui-input js-options">
+                    </div>
+                    <button type="button" class="layui-btn js-del_option">删除</button>
+                </div>
+                {/empty}
+                {notempty name='$vo.options'}
+                    {foreach $vo.options as $key=>$item}
+                <div class="layui-input-block js-option_div" style="margin-left: 0px;border:5px solid #FFF;">
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input lay-filter="js-answers" class="js-answers" type="checkbox" name="answers" lay-skin="primary" title="是否正确答案" {if condition="$item eq $vo.answers"} checked="" value="{$vo.answers} {/if}">
+                        <!--<input type="radio" name="answers_radio[]" value="设置为正确答案" title="设置为正确答案" checked="">-->
+                    </div>
+                    <div class="layui-input-inline" style="width: 450px;">
+                        <input type="text" name="answers_val[]" placeholder="请输入答案" autocomplete="off" class="layui-input js-options" value="{$item}">
+                    </div>
+                    <button type="button" class="layui-btn js-del_option">删除</button>
+                </div>
+                    {/foreach}
+                {/notempty}
+            </div>
+            <br/>
+            <span class="help-block"><b>必填，</b>请设置选项，并勾选正确答案，建议字符不要太长，一般小于200</span>
+        </div>
+        <div class="layui-form-item relative block">
+            <span class="color-green font-w7">问题描述</span>
+            <span class="color-desc margin-left-5">Mark Remark</span>
+            <label class="relative block">
+                <textarea class="layui-textarea" placeholder="请输入问题描述" name="describe">{$vo.describe|default=''}</textarea>
+            </label>
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+    <input type='hidden' value='{$group_info.id}' name='group_id'>
+    <div class="layui-form-item text-center">
+        <button class="layui-btn" type='submit' lay-submit lay-filter="doSub">保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+</form>
+
+{block name='script'}
+<script>
+    layui.form.render();
+    layui.use('form', function(){
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.on('checkbox(js-answers)', function(data){
+            if (data.elem.checked) {　　//判断当前多选框是选中还是取消选中
+                var child = $("input[name='answers']");
+                child.each(function (index, item) {
+                    item.checked = false;
+                });
+                data.elem.checked = true;
+                form.render('checkbox');
+            }
+        });
+        //监听提交
+        form.on('submit(doSub)', function(data){
+            var child = $("input[name='answers']");
+            var i = 0;
+            child.each(function (index, item) {
+                if (item.checked)
+                {
+                    i=1;
+                    item.value = $(".js-options").eq(index).val();
+                }
+            });
+            if (i <= 0)
+            {
+                layer.msg('未设置正确答案！');
+                return false;
+            }
+            return true;
+        });
+    });
+    $(document).on('click','#add_option',function () {
+        var len = $('.js-option_div').length;
+        if (len >= 4)
+        {
+            layer.msg('最多设置4个选项！');
+            return false;
+        }
+        var html ='<div class="layui-input-block js-option_div" style="margin-left: 0px;border:5px solid #FFF;"><div class="layui-input-inline" style="width: 150px;"><input lay-filter="js-answers" class="js-answers" type="checkbox" name="answers" lay-skin="primary" title="是否正确答案"></div><div class="layui-input-inline" style="width: 450px;"><input type="text" name="answers_val[]" placeholder="请输入答案" autocomplete="off" class="layui-input js-options"></div><button type="button" class="layui-btn js-del_option">删除</button></div>';
+        $('.option_div').append(html);
+        layui.form.render();
+    });
+    $(document).on('click','.js-del_option',function () {
+        var len = $('.js-option_div').length;
+        if (len <= 1)
+        {
+            layer.msg('最少保留一个选项！');
+            return false;
+        }
+        $(this).parents('.js-option_div').remove();
+        layui.form.render();
+    });
+</script>
+{/block}

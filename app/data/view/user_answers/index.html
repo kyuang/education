@@ -1,0 +1,48 @@
+{extend name="../../admin/view/main"}
+
+{block name="button"}
+{/block}
+
+{block name='content'}
+<div class="think-box-shadow table-block">
+    <p class=" margin-bottom-15">
+        演示接口文档：<a target="_blank" href="http://www.docway.net/project/1WkI0ZyQ7M1/share/1Wld0z7b1zE">http://www.docway.net/project/1WkI0ZyQ7M1/share/1Wld0z7b1zE</a>
+    </p>
+    {include file='user_answers/index_search'}
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class="text-left nowrap">用户信息</th>
+            <th class="text-left nowrap">答对数量</th>
+            <th class="text-left nowrap">错题数量</th>
+            <th class="text-left nowrap">分数</th>
+            <th class="text-left nowrap">创建信息</th>
+            <th class="text-left nowrap">修改信息</th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick>
+            <td class="text-left nowrap">
+                用户ID：{$vo.uid|default=''}<br/>
+                用户名：{$vo.username|default=''}<br/>
+                用户手机号：{$vo.phone|default=''}
+            </td>
+            <td class="text-left nowrap">{$vo.right_num|default=''}</td>
+            <td class="text-left nowrap">{$vo.fail_num|default=''}</td>
+            <td class="text-left nowrap">{$vo.grade|default=''}</td>
+            <td class="text-left nowrap">
+                创建时间：{$vo.create_at|format_datetime}
+            </td>
+            <td class="text-left nowrap">
+                操作时间：{$vo.update_at|format_datetime}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}
