@@ -31,6 +31,7 @@
     {if $is_show eq 1}
     <div class="foot_tap">
         <div class="topli">
+            <a href="{:url('index/index')}">
             <?php if(empty($selected) || $selected == 1){ ?>
                 <img class="footimg" src="__ROOT__/customer/img/tab11.png" />
                 <p class="footp footpacti">首页</p>
@@ -38,6 +39,7 @@
                 <img class="footimg" src="__ROOT__/customer/img/tab1.png" />
                 <p class="footp">首页</p>
             <?php } ?>
+            </a>
         </div>
         <div class="topli">
             {if $selected eq 2}
@@ -49,6 +51,7 @@
             {/if}
         </div>
         <div class="topli">
+            <a href="{:url('apply/index')}">
             {if $selected eq 3}
                 <img class="footimg" src="__ROOT__/customer/img/tab33.png" />
                 <p class="footp footpacti">在线报名</p>
@@ -56,15 +59,18 @@
                 <img class="footimg" src="__ROOT__/customer/img/tab3.png" />
                 <p class="footp">在线报名</p>
             {/if}
+            </a>
         </div>
         <div class="topli">
+            <a href="{:url('personal/index')}">
             {if $selected eq 4}
                 <img class="footimg" src="__ROOT__/customer/img/tab44.png" />
-                <p class="footp footpacti">在线报名</p>
+                <p class="footp footpacti">我的</p>
             {else}
                 <img class="footimg" src="__ROOT__/customer/img/tab4.png" />
                 <p class="footp">我的</p>
             {/if}
+            </a>
         </div>
     </div>
     {/if}

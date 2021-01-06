@@ -15,18 +15,19 @@
         {if $code eq 0}
         <p class="zf_pb">{$msg}</p>
         {else}
-        <p class="zf_pt">执行失败</p>
-        <p class="zf_pb">失败原因：{$msg}</p>
+        <p class="zf_pt">出现错误</p>
+        <p class="zf_pb">错误原因：{$msg}</p>
         {/if}
     {/notempty}
     {notempty name="url"}
     <div class="zf_allbtn">
         <div class="zf_allbtnl">
             <div class="zf_dirbtn">
+                <a href="{$url}">点击跳转</a>
                 {notempty name="seconds"}
-                <span id="seconds">{$seconds}</span>
+                （<span id="seconds">{$seconds}</span>）
                 {/notempty}
-                <a href="{$url}">点击跳转</a></div>
+            </div>
         </div>
     </div>
     {/notempty}

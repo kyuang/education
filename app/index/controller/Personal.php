@@ -41,7 +41,6 @@ class Personal extends Controller
         $user_info = $this->app->db->name('DataUser')->where($map)->find();
         $user_info['headimg'] = $this->headimg($user_info['headimg']);
         $this->assign('user_info',$user_info);
-        echo $user_info['headimg'];
         $this->assign('selected', 4);
         $this->fetch('personal/index');
     }
@@ -52,7 +51,7 @@ class Personal extends Controller
      * @return string
      */
     private function headimg($img_path = ''){
-        $default = url('customer/img/tximg.jpg',[],false,true);
+        $default = url('customer/img/person.png',[],false,true);
         if (!empty($img_path)){
             $default = url($img_path,[],false,true);
         }
