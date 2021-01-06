@@ -1,0 +1,44 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/datilist.css">
+<style type="text/css">
+	.liuyanlistbox a{
+		text-align: left;
+		color: #757575;
+	}
+	.liuyanpage a{
+		text-align: center;
+		color: #4f4f4f;
+	}
+</style>
+{/block}
+{block name='content'}
+<div class="quelistoutbox">
+	<div class="quelisttibox"><a href="{:url('user_msg/create')}">新建留言</a></div>
+	{empty name="data_list"}
+		<div class="liuyanlistbox">
+			<p class="quelista liuyana">没有更多记录了！</p>
+		</div>
+	{else}
+		{foreach $data_list as $key=>$vo}
+			<div class="liuyanlistbox">
+				<p class="liuyantime">{$vo.create_at}</p>
+				<a class="quelista liuyana" href="{:url('user_msg/detail')}?id={$vo.id}">
+					<span>{$vo.content}</span>
+					{notempty name='vo.reply'}
+					<span class="alreturn">已回复</span>
+					{/notempty}
+				</a>
+			</div>
+		{/foreach}
+	{/empty}
+	<div class="liuyanpage">
+		{if $page gt 1}
+		<a href="{:url('user_msg/index')}?page={$page - 1}" class="liuyanpre">上一页</a>
+		{/if}
+		{if count($data_list) egt $page_size}
+		<a href="{:url('user_msg/index')}?page={$page + 1}" class="liuyannext">下一页</a>
+		{/if}
+	</div>
+</div>
+{/block}

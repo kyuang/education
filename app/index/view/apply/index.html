@@ -1,0 +1,51 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/online.css">
+{/block}
+{block name='content'}
+<div class="outbox">
+	<!-- 联系方式 -->
+	<div class="adrtel">
+		<p class="touch">联系方式</p>
+		<p class="ontel">电话：{:sysconf('mobile')}</p>
+		<p class="onadr">地址：{:sysconf('address')}</p>
+	</div>
+	<!-- 表单 -->
+	<div class="formbox">
+		<p class="formti">在线报名表单</p>
+		<form id="apply" onsubmit="return false;" action="{:url('apply/store')}" method="post">
+			<p class="formliboxp"><span class="redstar">*</span> 姓名：</p>
+			<input type="text" name="username" id="username" placeholder="请输入您的姓名" class="formliinp" />
+			<p class="formliboxp"><span class="redstar">*</span> 电话：</p>
+			<input type="number" name="mobile" id="mobile" placeholder="请输入您的手机号" class="formliinp" />
+			<p class="formliboxp"><span class="redstar">*</span> 留言：</p>
+			<textarea name="message" id="message" class="liuyan" placeholder="请输入留言"></textarea>
+			<input type="submit" value="马上提交" class="tijiao" id="doBtn"/>
+		</form>
+	</div>
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript">
+    $(function () {
+        $('#apply').submit(
+            function () {
+                var form_data = $('#apply').serialize();
+                $.ajax({
+                    type:"POST",                      //请求类型
+                    url:"{:url('apply/store')}",           //URL
+                    data:form_data,   //传递的参数
+                    dataType:"json",                 //返回的数据类型
+                    success:function(data){          //data就是返回的json类型的数据
+                        layer.msg(data.info);
+                    },
+                    error:function(data){
+                        layer.msg('系统异常，请稍后重试！');
+                    }
+                });
+            }
+		);
+    });
+</script>
+{/block}
+

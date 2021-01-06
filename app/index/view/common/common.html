@@ -10,9 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=0.4">
     <link rel="shortcut icon" href="{:sysconf('site_icon')}">
+
     <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/swiper.min.css" />
-    <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/index.css">
 
     {block name="header"}{/block}
     {block name="style"}{/block}
@@ -28,22 +28,49 @@
     </div>
 
     <!-- 主体内容 结束 -->
+    {if $is_show eq 1}
     <div class="foot_tap">
-        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab11.png" />
-            <p class="footp footpacti">首页</p>
+        <div class="topli">
+            <?php if(empty($selected) || $selected == 1){ ?>
+                <img class="footimg" src="__ROOT__/customer/img/tab11.png" />
+                <p class="footp footpacti">首页</p>
+            <?php }else{ ?>
+                <img class="footimg" src="__ROOT__/customer/img/tab1.png" />
+                <p class="footp">首页</p>
+            <?php } ?>
         </div>
-        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab2.png" />
-            <p class="footp">商品</p>
+        <div class="topli">
+            {if $selected eq 2}
+                <img class="footimg" src="__ROOT__/customer/img/tab22.png" />
+                <p class="footp footpacti">本校概况</p>
+            {else}
+                <img class="footimg" src="__ROOT__/customer/img/tab2.png" />
+                <p class="footp">本校概况</p>
+            {/if}
         </div>
-        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab3.png" />
-            <p class="footp">购物袋</p>
+        <div class="topli">
+            {if $selected eq 3}
+                <img class="footimg" src="__ROOT__/customer/img/tab33.png" />
+                <p class="footp footpacti">在线报名</p>
+            {else}
+                <img class="footimg" src="__ROOT__/customer/img/tab3.png" />
+                <p class="footp">在线报名</p>
+            {/if}
         </div>
-        <div class="topli"><img class="footimg" src="__ROOT__/customer/img/tab4.png" />
-            <p class="footp">我的</p>
+        <div class="topli">
+            {if $selected eq 4}
+                <img class="footimg" src="__ROOT__/customer/img/tab44.png" />
+                <p class="footp footpacti">在线报名</p>
+            {else}
+                <img class="footimg" src="__ROOT__/customer/img/tab4.png" />
+                <p class="footp">我的</p>
+            {/if}
         </div>
     </div>
+    {/if}
 </div>
 {/block}
+<script src="__ROOT__/static/plugs/layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
 <script src="__ROOT__/customer/js/jquery2.14.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="__ROOT__/customer/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="__ROOT__/customer/js/public.js" type="text/javascript" charset="utf-8"></script>

@@ -1,1 +1,19 @@
-{$msg}
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/loginfail.css">
+{/block}
+{block name='content'}
+<div class="zf_outbox">
+    <div class="success_imgbox">
+        <img  class="success_img" src="__ROOT__/customer/img/shibai.png"/>
+    </div>
+    <p class="zf_pt">执行失败</p>
+    <p class="zf_pb">失败原因：{$msg}</p>
+    <div class="zf_allbtn">
+        <div class="zf_allbtnl">
+            <div class="zf_dirbtn"><a href="#">点击跳转</a></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

@@ -1,0 +1,26 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/liuyanban.css">
+{/block}
+{block name='content'}
+<div class="liuyanbanbox">
+	<p class="liuyanp">留言详情</p>
+	<div class="liuyanid">id: <span>{$detail_info.id}</span></div>
+	<div class="liuyandate">{$detail_info.create_at}</div>
+	<div class="liuyanxq">
+		<p class="liuyanxqp">{$detail_info.content}</p>
+	</div>
+	{notempty name="detail_info.reply"}
+	<div class="liuyanhuifu">
+		<p class="huifutime">{$detail_info.reply_at}</p>
+		<span class="huifusty">回复：</span>
+		<span class="huifuneir">{$detail_info.reply}</span>
+		<div class="clear"></div>
+	</div>
+	{/notempty}
+	<div class="liuyanpage">
+		<!--<a href="#" class="liuyanpre">上一条</a>
+		<a href="#" class="liuyannext">下一条</a>-->
+	</div>
+</div>
+{/block}

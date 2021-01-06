@@ -18,7 +18,7 @@ function easy_tip($msg, $params = [])
         die();
     } else {
         $params['msg'] = $msg;
-        return view('/tip/tip',$params);
+        return view('/tip/tip',$params)->assign('is_show',0);
     }
 }
 
@@ -58,4 +58,28 @@ function is_alipay(){
         return true;
     }
     return false;
+}
+
+/**
+ * 验证手机号
+ * @param $mobile
+ * @param string $match
+ * @return bool|int
+ */
+function isMobile($mobile, $match = '/^((\+86)?(1[3|4|5|6|7|8|9]\d{9}))$/')
+{
+    $mobile = trim($mobile);
+    if (empty($mobile)) {
+        return false;
+    }
+    return preg_match($match, $mobile);
+}
+
+/**
+ * 获取文件路径
+ * @param $file_name
+ * @return string
+ */
+function crmPath($file_name){
+    return __ROOT__."/customer/".$file_name;
 }

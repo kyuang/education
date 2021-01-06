@@ -85,6 +85,7 @@ abstract class Controller extends \stdClass
         }
         $this->csrf_message = lang('think_library_csrf_error');
         $this->initialize();
+        $this->assign('is_show',1);
     }
 
     /**

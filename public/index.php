@@ -18,5 +18,5 @@ namespace think;
 use think\admin\service\SystemService;
 
 require __DIR__ . '/../vendor/autoload.php';
-
+error_reporting(E_ERROR);
 SystemService::instance()->doInit();

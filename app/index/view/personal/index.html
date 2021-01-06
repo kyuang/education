@@ -1,0 +1,20 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/my.css">
+<style type="text/css">
+	.mymainbox a{color: #4c4c4c;text-align: left;}
+</style>
+{/block}
+{block name='content'}
+<div class="myheadbox">
+	<div class="myheadtx"><img class="myheadtximg" src="{$user_info.headimg}" ></div>
+	<div class="myheadname">{$user_info['username']}</div>
+	<!--<div class="myheadjieshao">这个人很懒，什么都没留下</div>-->
+</div>
+<div class="mymainbox">
+	<a class="mymainboxli" href="{:url('user_msg/index')}">留言记录<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>
+	<a class="mymainboxli" href="{:url('user_msg/answer')}">答题记录<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>
+	<!--<a class="mymainboxli" href="#">查看个人信息<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>
+	<a class="mymainboxli" href="#">修改个人信息<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>-->
+</div>
+{/block}

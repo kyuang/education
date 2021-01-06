@@ -46,7 +46,6 @@
             <td class="text-left nowrap">{$vo.message|default=''}</td>
             <td>{if $vo.status eq 0}<span class="color-red">未处理</span>{elseif $vo.status eq 1}<span class="color-green">已处理</span>{/if}</td>
             <td class="text-left nowrap">
-                创建人：{$vo.create_by}<br/>
                 创建时间：{$vo.create_at|format_datetime}
             </td>
             <td class="text-left nowrap">

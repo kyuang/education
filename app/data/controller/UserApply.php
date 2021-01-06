@@ -82,7 +82,6 @@ class UserApply extends Controller
             else
             {
                 $data['create_at'] = $cur_date;
-                $data['create_by'] = $operator;
             }
         }
     }

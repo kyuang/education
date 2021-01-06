@@ -1,1 +1,55 @@
-{$msg}
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/loginfail.css">
+{/block}
+{block name='content'}
+<div class="zf_outbox">
+    <div class="success_imgbox">
+        {if $code eq 0}
+        <img  class="success_img" src="__ROOT__/customer/img/chenggong.png"/>
+        {else}
+        <img  class="success_img" src="__ROOT__/customer/img/shibai.png"/>
+        {/if}
+    </div>
+    {notempty name="msg"}
+        {if $code eq 0}
+        <p class="zf_pb">{$msg}</p>
+        {else}
+        <p class="zf_pt">执行失败</p>
+        <p class="zf_pb">失败原因：{$msg}</p>
+        {/if}
+    {/notempty}
+    {notempty name="url"}
+    <div class="zf_allbtn">
+        <div class="zf_allbtnl">
+            <div class="zf_dirbtn">
+                {notempty name="seconds"}
+                <span id="seconds">{$seconds}</span>
+                {/notempty}
+                <a href="{$url}">点击跳转</a></div>
+        </div>
+    </div>
+    {/notempty}
+    <div class="clear"></div>
+</div>
+{/block}
+{block name='script'}
+{if condition="!empty($url) and ($seconds > 0)"}
+<script type="text/javascript">
+    //表单验证
+    $(function () {
+        var i = "{$seconds}";
+        $("#seconds").text(i);
+        var timeFun = window.setInterval(function () {
+            i--;
+            $('#seconds').text(i);
+            if (i < 0) {
+                $('#seconds').text(0);
+                clearInterval(timeFun);
+                location.href = '{$url}';
+            }
+        }, 1000);
+    });
+</script>
+{/if}
+{/block}

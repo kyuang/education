@@ -1,6 +1,7 @@
 .liuyanbanbox{
 	width: 100%;
 	background-color: #FFFFFF;
+
 	
 }
 .liuyanp{
@@ -11,11 +12,18 @@
 	padding: 0.5rem 0;
 }
 .liuyanid{
-	font-size: 0.26rem;
+	font-size: 0.28rem;
 	width: 100%;
-	padding:0.3rem 1rem;
+	padding:0.02rem 1.2rem;
 	box-sizing: border-box;
 	color: #2A2A2A;
+}
+.liuyandate{
+	width: 100%;
+	padding:0.02rem 1.2rem;
+	box-sizing: border-box;
+	font-size: 0.24rem;
+	color:#888;
 }
 .liuyanxq{
 	width: 70%;
@@ -28,6 +36,30 @@
 .liuyanxqp{
 	line-height: 0.5rem;
 	color: #4a4a4a;
+}
+.liuyanhuifu{
+	width: 70%;
+	margin: 0 auto;
+	box-sizing: border-box;
+	font-size: 0.24rem;
+	margin-top: 0.2rem;
+	color: #ff5500;
+}
+.huifusty{
+	display: block;
+	float: left;
+	height: 100%;
+	width: 15%;
+}
+.huifuneir{
+	display: block;
+	float: left;
+	width: 85%;
+}
+.huifutime{
+	font-size: 0.2rem;
+	color: #ff5500;
+	margin-top: 0.1rem;
 }
 .liuyanpage{
 	width: 100%;

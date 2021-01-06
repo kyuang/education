@@ -83,6 +83,22 @@
             <div class="help-block">管理程序版本，将显示在后台左上角标题。</div>
         </div>
         <div class="layui-form-item">
+            <span class="color-green font-w7">公司电话</span><span class="margin-left-5 color-desc">Mobile</span>
+            <label class="relative block">
+                <input readonly value="{:sysconf('mobile')}" class="layui-input layui-bg-gray">
+                <a data-copy="{:sysconf('mobile')}" class="fa fa-copy input-right-icon"></a>
+            </label>
+            <div class="help-block">公司电话将在前台展示。</div>
+        </div>
+        <div class="layui-form-item">
+            <span class="color-green font-w7">公司地址</span><span class="margin-left-5 color-desc">Address</span>
+            <label class="relative block">
+                <input readonly value="{:sysconf('address')}" class="layui-input layui-bg-gray">
+                <a data-copy="{:sysconf('address')}" class="fa fa-copy input-right-icon"></a>
+            </label>
+            <div class="help-block">公司地址将在前台展示。</div>
+        </div>
+        <div class="layui-form-item">
             <span class="color-green font-w7">公网备案号</span><span class="margin-left-5 color-desc">Baian</span>
             <label class="relative block">
                 <input readonly value="{:sysconf('beian')?:'-'}" class="layui-input layui-bg-gray">

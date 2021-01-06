@@ -1,0 +1,59 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/liuyanshuru.css">
+{/block}
+{block name='content'}
+<!-- outbox -->
+<div class="outbox">
+	<!-- 表单 -->
+	<div class="formbox">
+		<p class="formti">在线留言</p>
+		<div class="quelisttibox"><a href="{:url('user_msg/index')}">留言列表</a></div>
+		<form id="p_form" onsubmit="return false;" action="{:url('user_msg/store')}" method="post">
+			<textarea name="content" id="content" class="liuyan" placeholder="请输入留言"></textarea>
+			<input type="submit" value="马上提交" class="tijiao" />
+		</form>
+	</div>
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript">
+    /**
+	 * 跳转
+     * @param count
+     * @param url
+     */
+    function jump(count,url) {
+        window.setTimeout(function(){
+            count--;
+            if(count > 0) {
+                //$('#num').attr('innerHTML', count);
+                jump(count,url);
+            } else {
+                location.href=url;
+            }
+        }, 1000);
+    }
+    $(function () {
+        $('#p_form').submit(
+            function () {
+                var form_data = $('#p_form').serialize();
+                $.ajax({
+                    type:"POST",                      //请求类型
+                    url:"{:url('user_msg/store')}",           //URL
+                    data:form_data,   //传递的参数
+                    dataType:"json",                 //返回的数据类型
+                    success:function(data){          //data就是返回的json类型的数据
+                        layer.msg(data.info);
+                        jump(3,"{:url('user_msg/index')}")
+                    },
+                    error:function(data){
+                        layer.msg('系统异常，请稍后重试！');
+                    }
+                });
+            }
+		);
+    });
+</script>
+{/block}
+

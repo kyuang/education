@@ -1,6 +1,4 @@
-
 /* 表单 */
-
 .formbox{
 	padding: 0.15rem 0.2rem;
 	box-sizing: border-box;
@@ -78,4 +76,14 @@
 	font-size: 0.26rem;
 	text-align: center;
 	color: #c1c1c1;
+}
+.quelisttibox{
+	width: 2rem;
+	font-size: 0.3rem;
+	line-height: 0.66rem;
+	height: 0.66rem;
+	border-radius: 0.33rem;
+	background-color: #56bb37;
+	text-align: center;
+	color: #fff;
 }

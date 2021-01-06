@@ -66,6 +66,10 @@ class Config extends Controller
                 }
                 SystemService::instance()->setRuntime(null, [$xpath => 'admin']);
             }
+            $mobile = $this->request->post('mobile');
+            if (!empty($mobile) && !isMobile($mobile)) {
+                $this->error("手机号格式不正确！");
+            }
             foreach ($this->request->post() as $name => $value) sysconf($name, $value);
             sysoplog('系统配置管理', "修改系统参数成功");
             $this->success('修改系统参数成功！', sysuri("{$xpath}/index/index") . '#' . url("{$xpath}/config/index"));

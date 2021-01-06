@@ -25,6 +25,7 @@ class Index extends Controller
 {
     public function index()
     {
+        $this->assign('selected',1);
         $this->assign('list',[]);
         $this->fetch();
     }

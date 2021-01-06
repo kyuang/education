@@ -44,8 +44,54 @@
 
 
 /* 留言页面 */
+.liuyanlistbox{
+	width: 100%;
+	margin-top: 0.3rem;
+}
+.liuyantime{
+	font-size: 0.14rem;
+	color: #888888;
+}
 .liuyana{
 	overflow: hidden;
 	text-overflow:ellipsis;
 	white-space: nowrap;
+	padding-right: 0.7rem;
+	position: relative;
+	margin-top: 0;
+}
+.alreturn{
+	position: absolute;
+	font-size: 0.14rem;
+	right: 0;
+	top: 0;
+	display: inline-block;
+	line-height: 0.26rem;
+	background-color: #ffbf00;
+	padding: 0.02rem 0.04rem;
+	color: #fff;
+	border-radius: 0.06rem;
+}
+.liuyanpage{
+	width: 100%;
+	padding: 0.8rem;
+	box-sizing: border-box;
+	font-size: 0;
+	overflow: hidden;
+	font-size: 0.26rem;
+}
+.liuyanpage a{
+	padding: 0.08rem 0.16rem;
+	display: block;
+	border-radius: 0.1rem;
+}
+.liuyanpre{
+	float: left;
+	background-color: #e8e8e8;
+	color: #4f4f4f;
+}
+.liuyannext{
+	float: right;
+	background-color: #e8e8e8;
+	color: #4f4f4f;
 }
