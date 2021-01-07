@@ -1,6 +1,18 @@
 {extend name="common/common"}
 {block name='header'}
 <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/online.css">
+<style type="text/css">
+	.disabledBtn{
+		width: 100%;
+		margin: 0 auto;
+		height: 0.9rem;
+		line-height: 0.9rem;
+		font-size: 0.28rem;
+		color: #fff;
+		background-color: #CCC;
+		border-radius: 0.1rem;
+	}
+</style>
 {/block}
 {block name='content'}
 <div class="outbox">
@@ -20,7 +32,7 @@
 			<input type="number" name="mobile" id="mobile" placeholder="请输入您的手机号" class="formliinp" />
 			<p class="formliboxp"><span class="redstar">*</span> 留言：</p>
 			<textarea name="message" id="message" class="liuyan" placeholder="请输入留言"></textarea>
-			<input type="submit" value="马上提交" class="tijiao" id="doBtn"/>
+			<input type="submit" value="马上提交" class="tijiao" id="sub"/>
 		</form>
 	</div>
 </div>
@@ -30,6 +42,9 @@
     $(function () {
         $('#apply').submit(
             function () {
+                $('#sub').removeClass('tijiaobtn');
+                $('#sub').addClass('disabledBtn');
+                $('#sub').attr('disabled',"true");
                 var form_data = $('#apply').serialize();
                 $.ajax({
                     type:"POST",                      //请求类型
@@ -38,9 +53,15 @@
                     dataType:"json",                 //返回的数据类型
                     success:function(data){          //data就是返回的json类型的数据
                         layer.msg(data.info);
+                        $('#sub').addClass('tijiaobtn');
+                        $('#sub').removeClass('disabledBtn');
+                        $('#sub').removeAttr("disabled");
                     },
                     error:function(data){
                         layer.msg('系统异常，请稍后重试！');
+                        $('#sub').addClass('tijiaobtn');
+                        $('#sub').removeClass('disabledBtn');
+                        $('#sub').removeAttr("disabled");
                     }
                 });
             }

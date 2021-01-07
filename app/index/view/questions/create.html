@@ -1,0 +1,123 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/dati.css">
+<style type="text/css">
+    .disabledBtn{
+        width: 100%;
+        color: #FFFFFF;
+        background-color:#ccc ;
+        font-size: 0.32rem;
+        text-align: center;
+        line-height: 0.7rem;
+        height: 0.7rem;
+        border-radius: 0.35rem;
+        margin-top: 0.5rem;
+    }
+</style>
+{/block}
+{block name='content'}
+<div class="datioutbox">
+    <div class="datititle">{$group_info.title}</div>
+    <div class="datiformbox">
+    {empty name="data_list"}
+            <div class="firque">
+                <div class="queli"><span class="bigspanfont"></span>没有更多记录了！</div>
+            </div>
+    {else}
+        <form id="p_form" onsubmit="return false;" class="datiform" action="{:url('questions/store')}" method="post">
+            {foreach $data_list as $key=>$vo}
+            <div class="firque" id="q_{$vo.id}">
+                <div class="queli">
+                    <span class="bigspanfont">{$key+1}、</span>{$vo.question}
+                </div>
+
+                <!--<div class="quelibox quecheked"><label><input class="qeliint" type="radio" name="ti1" value="男"/><span class="spanlab"><span
+                        class="spans">A. </span>师傅师傅的师傅师傅的师傅师傅的师傅师傅师傅的第三</span></label>
+                </div>-->
+
+                {foreach $vo.options_list as $k=>$v}
+                <div class="quelibox" data-a_id="{$vo.id}" data-a_v="{$v}"><label><input class="qeliint" type="radio" name="ti1[]"/><span class="spanlab"><span class="spans">{$k}、
+									</span>{$v}</span></label></div>
+                {/foreach}
+                <!--<div class="anwbox">正确答案：C</div>-->
+            </div>
+            {/foreach}
+            <input type="hidden" name="group_id" value="{$group_info.id}"/>
+            <input class="tijiaobtn" type="submit" name="" id="sub" value="提交"/>
+        </form>
+    {/empty}
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript">
+    /**
+     * 跳转
+     * @param count
+     * @param url
+     */
+    function jump(count, url) {
+        window.setTimeout(function () {
+            count--;
+            if (count > 0) {
+                //$('#num').attr('innerHTML', count);
+                jump(count, url);
+            } else {
+                location.href = url;
+            }
+        }, 1000);
+    }
+    var answers = {};
+    $(function () {
+        $(".quelibox").click(function () {
+            var cur_id = parseInt($(this).attr('data-a_id'));
+            var cur_v = $(this).attr('data-a_v');
+            if (!cur_id)
+            {
+                return false;
+            }
+            var len = $('#q_'+cur_id).find('.quelibox').removeClass("quecheked");
+            $(this).addClass("quecheked");
+            answers[cur_id] = cur_v;
+
+            // 下面这个改成获取input的选中状态然后填加quecheked样式
+            //$(".quelibox").parent('.firque').children().removeClass("quecheked");
+            //$(this).addClass("quecheked");
+            // anwbox默认为hide(),提交之后为show()
+        });
+        $('#p_form').submit(
+            function () {
+                $('#sub').removeClass('tijiaobtn');
+                $('#sub').addClass('disabledBtn');
+                $('#sub').attr('disabled',"true");
+                var form_data = {'group_id':'{$group_info.id}','answers':answers};
+                $.ajax({
+                    type: "POST",                      //请求类型
+                    url: "{:url('questions/store')}",           //URL
+                    data: form_data,   //传递的参数
+                    dataType: "json",                 //返回的数据类型
+                    success: function (data) {          //data就是返回的json类型的数据
+                        if(data.code == 1)
+                        {
+                            layer.msg(data.info);
+                            jump(5, "{:url('questions/answers')}?cate_id={$group_info.cate_id}")
+                        }
+                        else{
+                            layer.msg(data.info);
+                        }
+                        $('#sub').addClass('tijiaobtn');
+                        $('#sub').removeClass('disabledBtn');
+                        $('#sub').removeAttr("disabled");
+                    },
+                    error: function (data) {
+                        layer.msg('系统异常，请稍后重试！');
+                        $('#sub').addClass('tijiaobtn');
+                        $('#sub').removeClass('disabledBtn');
+                        $('#sub').removeAttr("disabled");
+                    }
+                });
+            }
+        );
+    });
+</script>
+{/block}
+

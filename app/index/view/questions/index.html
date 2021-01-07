@@ -1,0 +1,40 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/datilist.css">
+<style type="text/css">
+	.liuyanlistbox a{
+		text-align: left;
+		color: #757575;
+	}
+	.liuyanpage a{
+		text-align: center;
+		color: #4f4f4f;
+	}
+	.formti{
+		font-size: 0.28rem;
+		color: #ff0000;
+		line-height: 0.65rem;
+		margin-bottom: 0.2rem;
+	}
+</style>
+{/block}
+{block name='content'}
+<div class="quelistoutbox">
+	<!--<div class="quelisttibox"><a href="{:url('user_msg/create')}">新建留言</a></div>-->
+	<p class="formti">在线答题</p>
+	{empty name="data_list"}
+		<div class="liuyanlistbox">
+			<p class="quelista liuyana">没有更多记录了！</p>
+		</div>
+	{else}
+		{foreach $data_list as $key=>$vo}
+			<div class="liuyanlistbox">
+				<a class="quelista liuyana" href="{:url('questions/answers')}?cate_id={$vo.id}">
+					<span>{$vo.name}</span>
+					<span class="alreturn">进度（{$vo.total_answers}/{$vo.total_questions}）</span>
+				</a>
+			</div>
+		{/foreach}
+	{/empty}
+</div>
+{/block}

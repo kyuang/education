@@ -1,0 +1,48 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/datilist.css">
+<style type="text/css">
+	.liuyanlistbox a{
+		text-align: left;
+		color: #757575;
+	}
+	.liuyanpage a{
+		text-align: center;
+		color: #4f4f4f;
+	}
+	.formti{
+		font-size: 0.28rem;
+		color: #ff0000;
+		line-height: 0.65rem;
+	}
+	.liuyantime{
+		font-size: 0.14rem;
+		color: #888888;
+	}
+</style>
+{/block}
+{block name='content'}
+<div class="quelistoutbox">
+	<!--<div class="quelisttibox"><a href="{:url('user_msg/create')}">新建留言</a></div>-->
+	<p class="formti">答题记录</p>
+	<p class="liuyantime">答题须知：1、点击试卷开始答题。2、答题只能依次进行，且需要上一题满足80分，才可开始下场答题！</p>
+	{empty name="data_list"}
+		<div class="liuyanlistbox">
+			<p class="quelista liuyana">没有更多记录了！</p>
+		</div>
+	{else}
+		{foreach $data_list as $key=>$vo}
+			<div class="liuyanlistbox">
+				<a class="quelista liuyana" href="{:url('questions/create')}?group_id={$vo.id}">
+					<span>{$vo.title}</span>
+					{if $vo.answers_status eq 0}
+					<span class="alreturn">未答题</span>
+					{else}
+					<span class="alreturn">分数{$vo.grade}</span>
+					{/if}
+				</a>
+			</div>
+		{/foreach}
+	{/empty}
+</div>
+{/block}

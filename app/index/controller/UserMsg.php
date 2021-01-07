@@ -26,7 +26,7 @@ use think\admin\Controller;
  */
 class UserMsg extends Controller
 {
-    public $page_size = 1;
+    public $page_size = 10;
 
     /**
      * 留言
@@ -45,7 +45,7 @@ class UserMsg extends Controller
         $this->assign('page',$page);
         $this->assign('page_size',$this->page_size);
         $this->assign('data_list',$data_list);
-        $this->assign('selected', 3);
+        $this->assign('selected', 4);
         $this->fetch('user_msg/index');
     }
 
@@ -64,7 +64,6 @@ class UserMsg extends Controller
      */
     public function store()
     {
-        $this->success('添加成功！');
         $content = input('content');
 
         if (empty($content)) {
