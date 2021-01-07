@@ -103,7 +103,6 @@
     <div class="classbox">
         <div class="classboxinner">
             {volist name="product" id="vo" mod="2" length='10'}
-            <p>{$mod}</p>
             {eq name="mod" value="0"}<div class="classlibox">{/eq}
             <a href="{:url('index/product/details')}?id={$vo.id}">
                 <div class="classsmaboxl">
