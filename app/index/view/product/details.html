@@ -58,10 +58,10 @@
 <!-- 底部切换 -->
 <div class="foot_tap">
 	<div class="detatelbox">
-		<a href="#" class="telbtn"><img src="__ROOT__/customer/img/tele.png" ></a>
+		<a href="trl:{:sysconf('mobile')}" class="telbtn"><img src="__ROOT__/customer/img/tele.png" ></a>
 	</div>
 	<div class="detabtnbox">
-		<a href="#" class="lijibtn">立即预约</a>
+		<a href="{:url('index/product/yuyue')}?id={$detail.id}" class="lijibtn">立即预约</a>
 	</div>
 </div>
 {/block}

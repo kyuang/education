@@ -103,6 +103,7 @@
     <div class="classbox">
         <div class="classboxinner">
             {volist name="product" id="vo" mod="2" length='10'}
+            <p>{$mod}</p>
             {eq name="mod" value="0"}<div class="classlibox">{/eq}
             <a href="{:url('index/product/details')}?id={$vo.id}">
                 <div class="classsmaboxl">
@@ -113,15 +114,23 @@
                     <p class="classyy">已预约: <span>3</span></p>
                 </div>
             </a>
-            {eq name="mod" value="1"} <div class="clear"></div></div>{/eq}
+            <a href="{:url('index/product/details')}?id={$vo.id}">
+                <div class="classsmaboxl">
+                    <img src="__ROOT__/customer/img/classpic.jpg">
+                    <p class="classname">零基础英语神速突破零基础英语神速突破</p>
+                    <p class="classjj">快速突破</p>
+                    <p class="classpri">￥<span>99</span></p>
+                    <p class="classyy">已预约: <span>3</span></p>
+                </div>
+            </a>
+            {eq name="mod" value="1"} <div class="clear"></div>{/eq}
             {/volist}
+
         </div>
     </div>
+    <div class="clear"></div>
 
 </div>
-<!-- 底部菜单栏 -->
-
-
 {/block}
 
 {block name='script'}
