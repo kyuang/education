@@ -17,7 +17,7 @@
         {eq name="mod" value="0"}<div class="fenleilibox">{/eq}
 
         <div class="fenleismabox">
-            <a href="#">
+            <a href="{:url('index/product/index')}?cate={$vo.id}">
                 {empty name="vo.cover"}
                     <img src="__ROOT__/customer/img/01.png">
                 {/empty}
@@ -36,7 +36,7 @@
             <ul class="swiper-wrapper">
                 {empty name="slider"}
                 <li class="swiper-slide">
-                    <a href="#"><img class="swiper_img" src="__ROOT__/customer/img/swiper.png" /></a>
+                    <a href="javascript:;"><img class="swiper_img" src="__ROOT__/customer/img/swiper.png" /></a>
                 </li>
                 {/empty}
 

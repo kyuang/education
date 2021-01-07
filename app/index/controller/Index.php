@@ -80,6 +80,7 @@ class Index extends CommonController
     {
         $this->title = '本校概况';
         $this->intro = sysdata('intro');
+        $this->assign('selected',2);
         $this->fetch('intro');
     }
 
