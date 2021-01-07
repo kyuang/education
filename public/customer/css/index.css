@@ -218,6 +218,9 @@
 	line-height: 0.4rem;
 	color: #9e9e9e;
 }
+.titlet_div{
+	position: relative;
+}
 .titlep{
 	width: 100%;
 	padding-left: 0.4rem;
@@ -225,6 +228,13 @@
 	font-size: 0.28rem;
 	color: #8a8a8a;
 	margin-top: 0.8rem;
+}
+.titlet_duo{
+	font-size: 0.28rem;
+	position: absolute;
+	right: 0.2rem;
+	top:0;
+	color: #8a8a8a;
 }
 /* 课程推荐 */
 .classbox{

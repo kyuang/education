@@ -76,27 +76,24 @@ class Index extends CommonController
         $this->fetch('list');
     }
 
-    public function online()
+    public function intro()
     {
         $this->title = '本校概况';
-        $this->assign('list', []);
-        $this->fetch('online');
+        $this->intro = sysdata('intro');
+        $this->fetch('intro');
     }
 
-
-    public function school()
+    public function article()
     {
-        $this->title = '本校概况';
-        $this->assign('list', []);
-        $this->fetch('school');
+        $this->title = '详情';
+
+        $id = input('id');
+        $detail = $this->app->db->name('DataNewsItem')->where(['id'=>$id])
+            ->where(['id' => $id])->find();
+        $this->assign('detail', $detail);
+        $this->fetch('article');
     }
 
-    public function search()
-    {
-        $this->title = '搜索';
-        $this->assign('list', []);
-        $this->fetch('search');
-    }
 
 
     public function dati()
@@ -107,12 +104,7 @@ class Index extends CommonController
     }
 
 
-    public function details()
-    {
-        $this->title = '明细';
-        $this->assign('list', []);
-        $this->fetch('details');
-    }
+
 
 
     public function card()

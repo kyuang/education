@@ -1,0 +1,50 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/list.css">
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/search.css">
+<style>
+	.listboxinner img{
+		max-height: 320px;
+	}
+</style>
+{/block}
+{block name='content'}
+<div class="seamain">
+	<div class="seasebox">
+		<div class="searchbox">
+			<input class="searinp" type="text" placeholder="请输入搜索内容" />
+			<img class="searchimg" src="__ROOT__/customer/img/sehui.jpg" />
+		</div>
+		<a href="#" class="quxiao search">搜索</a>
+	</div>
+</div>
+
+<div class="outbox">
+	<!-- 课程列表li -->
+
+	{volist name="product_list" id="vo"}
+	<div class="listbox">
+		<div class="listboxinner" data-id="{$vo.id}">
+			<div class="listimgbox"><img class="listimg detail_item" src="{$vo.cover}" ></div>
+			<div class="listbotbox">
+				<p class="listbotboxpt detail_item">{$vo.name}</p>
+				<p class="listbotboxpm">{$vo.cat_name}</p>
+				<p class="listbotboxpb">￥<span>{$vo.price_selling}</span></p>
+				<a class="rightbtn" href="#">立即预约</a>
+			</div>
+		</div>
+	</div>
+	{/volist}
+</div>
+{/block}
+{block name='script'}
+<script>
+	$('.listboxinner').on('click','.detail_item',function () {
+		var id = $(this).parents('.listboxinner').data('id');
+		location.href = "{:url('index/product/details')}?id="+id;
+	})
+
+
+</script>
+{/block}
+

@@ -1,0 +1,65 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/details.css">
+<style>
+	.swiperbox img{
+		max-height: 360px;
+	}
+</style>
+{/block}
+{block name='content'}
+<div class="outbox">
+	<!-- 轮播 -->
+	<div class="swiperbox">
+		<!--<div class="swiper-container swiset">-->
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide">
+					<a href="#"><img class="swiper_img" src="{$detail.cover}" /></a>
+				</li>
+			</ul>
+			<!--<div class="swiper-pagination"></div>-->
+		<!--</div>-->
+	</div>
+	<!-- 课程 -->
+	<div class="detaclassbox">
+		<p class="detaboxpt">{$detail.name}</p>
+
+	</div>
+</div>
+<!-- outboxbottom -->
+<div class="outboxb">
+	<div class="detaclassde">
+		<div class="detaclassdeinner">详情</div>
+	</div>
+	<div class="detaclassjj">
+		<div class="detaclassjjinner">
+			{:$detail.content}
+		</div>
+	</div>
+</div>
+
+
+<!-- 底部切换 -->
+<div class="foot_tap">
+	<div class="detatelbox">
+		<a href="#" class="telbtn"><img src="__ROOT__/customer/img/tele.png" ></a>
+	</div>
+	<div class="detabtnbox">
+		<a href="#" class="lijibtn">立即预约</a>
+	</div>
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript">
+	$(function() {
+		// 轮播图
+		var mySwiper = new Swiper('.swiper-container', {
+			autoplay: 3000,
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			loop: true,
+		})
+
+	})
+</script>
+{/block}

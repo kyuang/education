@@ -12,7 +12,7 @@ body{
 	overflow: hidden;
 }
 .searchbox {
-	width: 85%;
+	width: 80%;
 	box-sizing: border-box;
 	font-size: 0;
 	position: relative;
@@ -66,12 +66,15 @@ body{
 	width: 15%;
 	float: left;
 	font-size: 0.28rem;
-	height: 0.8rem;
-	line-height: 0.8rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
 	text-align: center;
 	padding-left: 0.1rem;
 	box-sizing: border-box;
-	color: #8e8e93;
+	background: #77ce5d;
+	border-radius: 0.2rem;
+	margin: 0.1rem 0 0 0.1rem;
+
 }
 .seati{
 	line-height: 0.6rem;

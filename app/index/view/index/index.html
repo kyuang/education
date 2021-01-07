@@ -66,15 +66,15 @@
     <div class="picadbox">
         {notempty name="article"}
         <div class="picadleftbox">
-            <a href="#"><img src="{$article.0.cover}"></a>
+            <a href="{:url('index/index/article')}?id={$article.0.id}"><img src="{$article.0.cover}"></a>
         </div>
         {/notempty}
         <div class="picadrightbox">
             <?php if(count($article) > 1){  ?>
-            <div class="picadrtop"><a href="#"><img src="{$article.1.cover}"></a></div>
+            <div class="picadrtop"><a href="{:url('index/index/article')}?id={$article.1.id}"><img src="{$article.1.cover}"></a></div>
             <?php } ?>
             <?php if(count($article) > 2){  ?>
-            <div class="picadrtop"><a href="#"><img src="{$article.2.cover}"></a></div>
+            <div class="picadrtop"><a href="{:url('index/index/article')}?id={$article.2.id}"><img src="{$article.2.cover}"></a></div>
             <?php } ?>
         </div>
         <div class="clear"></div>
@@ -93,13 +93,19 @@
             </dic>
         </div>
     </div>
-    <p class="titlep">本校热门课程</p>
+    <div class="titlet_div">
+        <p class="titlep">本校热门课程</p>
+        <a href="{:url('index/product/index')}">
+            <span class="titlet_duo">更多>></span>
+        </a>
+    </div>
+
     <!-- 课程推荐 -->
     <div class="classbox">
         <div class="classboxinner">
             {volist name="cates" id="vo" mod="2" length='10'}
             {eq name="mod" value="0"}<div class="classlibox">{/eq}
-            <a href="#">
+            <a href="{:url('index/product/details')}?id={$vo.id}">
                 <div class="classsmaboxl">
                     <img src="__ROOT__/customer/img/classpic.jpg">
                     <p class="classname">零基础英语神速突破零基础英语神速突破</p>
