@@ -25,11 +25,24 @@ use think\App;
  */
 class CommonController extends Controller
 {
+    protected $crm_info = [];
 
     public function __construct(App $app)
     {
         parent::__construct($app);
-        $this->assign('is_show',1);
-        $this->assign('selected',0);
+        $this->crm_info = $this->getCrmInfo();
+        $this->assign('is_show', 1);
+        $this->assign('selected', 0);
+    }
+
+    /**
+     * 获取登录信息
+     * @return array
+     */
+    public function getCrmInfo()
+    {
+        $user_info = $this->app->session->get('crm');
+        $user_info = ['id'=>1,'username'=>'aaa'];
+        return (array)$user_info;
     }
 }

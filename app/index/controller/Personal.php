@@ -17,15 +17,14 @@
  */
 namespace app\index\controller;
 
-use app\index\service\user\UserService;
-use think\admin\Controller;
-
 /**
  * Class Index
  * @package app\index\controller
  */
-class Personal extends Controller
+class Personal extends CommonController
 {
+    protected $middleware = ['app\middleware\Auth'];
+
     /**
      * 个人中心
      */
@@ -33,9 +32,7 @@ class Personal extends Controller
     {
         $this->title = '个人中心';
 
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         $map = ['id' => $uid];
         $user_info = $this->app->db->name('DataUser')->where($map)->find();

@@ -17,15 +17,13 @@
  */
 namespace app\index\controller;
 
-use app\index\service\user\UserService;
-use think\admin\Controller;
-
 /**
  * Class Index
  * @package app\index\controller
  */
-class Questions extends Controller
+class Questions extends CommonController
 {
+    protected $middleware = ['app\middleware\Auth'];
     public $pass_grade = 80;
 
     /**
@@ -37,9 +35,7 @@ class Questions extends Controller
         //获取分类
         $map = ['pid' => 0, 'status' => 1, 'deleted' => 0];
         $data_list = $this->app->db->name('ShopGoodsCate')->field(['id', 'name'])->where($map)->order('id asc')->select()->toArray();
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         foreach ($data_list as $key => &$item) {
             //查询所有试卷数量
@@ -67,9 +63,7 @@ class Questions extends Controller
         }
         //查询所有试卷数量
         $data_list = $this->app->db->name('DataQuestionsGroup')->where(['cate_id' => $cate_id, 'status' => 1, 'deleted' => 0])->order('id asc')->select()->toArray();
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         foreach ($data_list as $key => &$item) {
             //获取答题内容
@@ -88,6 +82,7 @@ class Questions extends Controller
 
     /**
      * 答题
+     * @return \think\response\View
      */
     public function create()
     {
@@ -99,14 +94,11 @@ class Questions extends Controller
         if (empty($group_info)) {
             return easy_tip('试卷不存在！', ['code' => 1, 'url' => url('questions/index'), 'seconds' => 5]);
         }
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         //校验是否满足答题条件！
-        $pass_res = $this->getPrevGrade($group_id,$uid);
-        if($pass_res['code'] !== 0)
-        {
+        $pass_res = $this->getPrevGrade($group_id, $uid);
+        if ($pass_res['code'] !== 0) {
             return easy_tip("上一期习题够{$this->pass_grade}分，才可答题！", ['code' => 1, 'url' => url('questions/index'), 'seconds' => 5]);
         }
         //获取习题
@@ -136,19 +128,19 @@ class Questions extends Controller
      * @param $uid
      * @return int
      */
-    private function getPrevGrade($group_id,$uid){
+    private function getPrevGrade($group_id, $uid)
+    {
         //获取上一题分数，不够80分，不允许答题！
         $prev_info = $this->app->db->name('DataQuestionsGroup')->where('id', '<', $group_id)->where(['status' => 1, 'deleted' => 0])->find();
-        if(empty($prev_info))
-        {
-            return alert_info(0,'通过！');
+        if (empty($prev_info)) {
+            return alert_info(0, '通过！');
         }
         $prev_answers = $this->app->db->name('DataUserAnswers')->where(['group_id' => $prev_info['id'], 'uid' => $uid])->find();
         $prev_grade = intval($prev_answers['grade']);
-        if ($prev_grade < $this->pass_grade){
-            return alert_info(1,'分数不够！');
+        if ($prev_grade < $this->pass_grade) {
+            return alert_info(1, '分数不够！');
         }
-        return alert_info(0,'分数够了！');
+        return alert_info(0, '分数够了！');
     }
 
     /**
@@ -170,14 +162,11 @@ class Questions extends Controller
             return easy_tip('试卷不存在！', ['code' => 1, 'url' => url('questions/index'), 'seconds' => 5]);
         }
         $cate_id = $group_info['cate_id'];
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         //校验是否满足答题条件！
-        $pass_res = $this->getPrevGrade($group_id,$uid);
-        if($pass_res['code'] !== 0)
-        {
+        $pass_res = $this->getPrevGrade($group_id, $uid);
+        if ($pass_res['code'] !== 0) {
             $this->error("上一期习题够{$this->pass_grade}分，才可答题！");
         }
         //获取习题
