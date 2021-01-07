@@ -1,6 +1,7 @@
 <?php
-declare (strict_types=1);
+declare (strict_types = 1);
 namespace app\index\service\user;
+
 use think\admin\Service;
 
 /**
@@ -14,13 +15,40 @@ class UserService extends Service
      * 获取登录信息
      * @return array
      */
-    public function loginInfo(){
+    public function loginInfo()
+    {
         $user_info = $this->app->session->get('crm');
-        $user_info = ['id'=>1];
+        $user_info = ['id' => 1];
         $user_id = intval($user_info['id']);
-        if ($user_id > 0){
-            return alert_info(0,'登录成功！',$user_info);
+        if ($user_id > 0) {
+            return alert_info(0, '登录成功！', $user_info);
         }
-        return alert_info(1,'未登录！');
+        return alert_info(1, '未登录！');
+    }
+
+    /**
+     * 执行登录
+     * @param $user_id
+     * @return array
+     */
+    public function doLogin($user_id)
+    {
+        $user_info = $this->app->db->name('DataUser')->where(['id' => $user_id])->find();
+        if (empty($user_info)) {
+            return alert_info(1, '用户不存在！');
+        }
+        $this->app->session->set('crm', $user_info);
+        return alert_info(0, '登录成功！', $user_info);
+    }
+
+    /**
+     * 退出登录
+     * @return bool
+     */
+    public function logout()
+    {
+        $this->app->session->clear();
+        $this->app->session->destroy();
+        return true;
     }
 }

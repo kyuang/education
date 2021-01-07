@@ -19,7 +19,7 @@ class Auth
         $UserService = UserService::instance();
         $login_res = $UserService->loginInfo();
         if ($login_res['code'] !== 0){
-            //return easy_tip('请先授权登录！');
+            return easy_tip('请先授权登录！',['code'=>1,'url'=>url('user_msg/index'),'seconds'=>3]);
         }
         return $next($request);
     }

@@ -17,15 +17,13 @@
  */
 namespace app\index\controller;
 
-use app\index\service\user\UserService;
-use think\admin\Controller;
-
 /**
  * Class Index
  * @package app\index\controller
  */
-class UserMsg extends Controller
+class UserMsg extends CommonController
 {
+    protected $middleware = ['app\middleware\Auth'];
     public $page_size = 10;
 
     /**
@@ -36,9 +34,7 @@ class UserMsg extends Controller
         $page = input('page',1);
         $this->title = '留言列表';
 
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         $map = ['uid' => $uid];
         $data_list = $this->app->db->name('DataUserMsg')->field(['*'])->where($map)->order('id desc')->page($page,$this->page_size)->select()->toArray();
@@ -69,9 +65,7 @@ class UserMsg extends Controller
         if (empty($content)) {
             $this->error('请输入留言内容！');
         }
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         $data = [
             'uid' => $uid,
@@ -95,9 +89,7 @@ class UserMsg extends Controller
             return easy_tip('参数错误！',['code'=>1,'url'=>url('user_msg/index'),'seconds'=>5]);
         }
         $this->title = '留言详情';
-        $UserService = UserService::instance();
-        $login_res = $UserService->loginInfo();
-        $crm_info = $login_res['data'];
+        $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         //获取内容
         $map = [

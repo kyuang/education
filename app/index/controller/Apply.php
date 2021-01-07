@@ -17,13 +17,11 @@
  */
 namespace app\index\controller;
 
-use think\admin\Controller;
-
 /**
  * Class Index
  * @package app\index\controller
  */
-class Apply extends Controller
+class Apply extends CommonController
 {
     /**
      * 在线报名
