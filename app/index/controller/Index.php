@@ -15,34 +15,50 @@
 
 namespace app\index\controller;
 
-use think\admin\Controller;
+use app\data\service\GoodsService;
 
 /**
  * Class Index
  * @package app\index\controller
  */
-class Index extends Controller
+class Index extends CommonController
 {
     public function index()
     {
-        $this->assign('selected',1);
-        $this->assign('list',[]);
+        $cates = GoodsService::instance()->getCateList();
+        $this->assign('cates', $cates);
+
+
+        $this->slider = sysdata('slider');
+
+        $this->about = sysdata('about');
+        $this->app_name = sysconf('app_name');
+        //广告
+        $query = $this->_query('DataNewsItem');
+        $query->like('mark',['mark'=>'首页']);
+        $query->where(['deleted' => 0])->order('sort desc,id desc')->limit(3);
+        $this->article = $query->query->select()->toArray();
+        //商品
+        $query = $this->_query('ShopGoods');
+        $query->like('mark',['mark'=>'热门']);
+        $query->where(['deleted' => 0])->order('sort desc,id desc')->limit(4);
+        $this->product = $query->query->select()->toArray();
         $this->fetch();
     }
-
 
 
     public function kecheng()
     {
         $this->title = '课程';
-        $this->assign('list',[]);
+        $this->assign('selected', 1);
+        $this->assign('list', []);
         $this->fetch('list');
     }
 
     public function online()
     {
         $this->title = '本校概况';
-        $this->assign('list',[]);
+        $this->assign('list', []);
         $this->fetch('online');
     }
 
@@ -50,14 +66,14 @@ class Index extends Controller
     public function school()
     {
         $this->title = '本校概况';
-        $this->assign('list',[]);
+        $this->assign('list', []);
         $this->fetch('school');
     }
 
     public function search()
     {
         $this->title = '搜索';
-        $this->assign('list',[]);
+        $this->assign('list', []);
         $this->fetch('search');
     }
 
@@ -65,7 +81,7 @@ class Index extends Controller
     public function dati()
     {
         $this->title = '答题';
-        $this->assign('list',[]);
+        $this->assign('list', []);
         $this->fetch('dati');
     }
 
@@ -73,7 +89,7 @@ class Index extends Controller
     public function details()
     {
         $this->title = '明细';
-        $this->assign('list',[]);
+        $this->assign('list', []);
         $this->fetch('details');
     }
 
@@ -81,7 +97,7 @@ class Index extends Controller
     public function card()
     {
         $this->title = '名片';
-        $this->assign('list',[]);
+        $this->assign('list', []);
         $this->fetch('card');
     }
 }

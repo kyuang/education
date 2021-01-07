@@ -88,6 +88,9 @@
 	box-sizing: border-box;
 	padding: 0 0.3rem;
 }
+.swiper-wrapper{
+	height: 300px;
+}
 
 .swiset {
 	width: 100%;
@@ -98,6 +101,7 @@
 
 .swiper_img {
 	width: 100%;
+	height: 100%;
 }
 
 /* 通知滚动 */
@@ -244,6 +248,7 @@
 .classsmaboxl{
 	float: left;
 	width: 45%;
+	margin-right: 0.3rem;
 }
 .classsmaboxl img{
 	max-height: 3.3rem;

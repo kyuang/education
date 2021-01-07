@@ -59,6 +59,16 @@ class Config extends Controller
     }
 
     /**
+     * 学校简介
+     */
+    public function intro()
+    {
+        $this->skey = 'intro';
+        $this->title = '学校简介';
+        $this->__sysdata('content');
+    }
+
+    /**
      * 应用轮播图片
      * @menu true
      * @auth true

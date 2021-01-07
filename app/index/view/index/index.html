@@ -13,175 +13,117 @@
     </div>
     <!-- 分类 -->
     <div class="fenlei">
-        <div class="fenleilibox">
-            <div class="fenleismabox">
-                <a href="#">
+        {volist name="cates" id="vo" mod="10" length='10'}
+        {eq name="mod" value="0"}<div class="fenleilibox">{/eq}
 
-                    <img src="img/01.png">
-                    <p class="setp">精选</p>
-                </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/02.png">
-                <p class="setp">数学</p>
+        <div class="fenleismabox">
+            <a href="#">
+                {empty name="vo.cover"}
+                    <img src="__ROOT__/customer/img/01.png">
+                {/empty}
+                {notempty name="vo.cover"}
+                    <img src="{$vo.cover}">
+                {/notempty}
+                <p class="setp">{$vo.name}</p>
             </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/03.png">
-                <p class="setp">语文</p>
-            </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/04.png">
-                <p class="setp">英语</p>
-            </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/05.png">
-                <p class="setp">特长</p>
-            </a>
-            </div>
-            <div class="clear"></div>
         </div>
-        <div class="fenleilibox">
-            <div class="fenleismabox"><a href="#">
-                <img src="img/06.png">
-                <p class="setp">精选</p>
-            </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/07.png">
-                <p class="setp">在线课</p>
-            </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/08.png">
-                <p class="setp">一对一</p>
-            </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/09.png">
-                <p class="setp">学校</p>
-            </a>
-            </div>
-            <div class="fenleismabox"><a href="#">
-                <img src="img/10.png">
-                <p class="setp">报名</p>
-            </a>
-            </div>
-            <div class="clear"></div>
-        </div>
+        {eq name="mod" value="9"} </div><div class="clear"></div>{/eq}
+        {/volist}
     </div>
     <!-- 轮播 -->
     <div class="swiperbox">
         <div class="swiper-container swiset">
             <ul class="swiper-wrapper">
+                {empty name="slider"}
                 <li class="swiper-slide">
-                    <a href="#"><img class="swiper_img" src="img/swiper.png" /></a>
+                    <a href="#"><img class="swiper_img" src="__ROOT__/customer/img/swiper.png" /></a>
                 </li>
-                <li class="swiper-slide">
-                    <a href="#"><img class="swiper_img" src="img/swiper.png" /></a>
-                </li>
-                <li class="swiper-slide">
-                    <a href="#"><img class="swiper_img" src="img/swiper.png" /></a>
-                </li>
+                {/empty}
+
+                {volist name="slider" id="vo" length='6'}
+                    <li class="swiper-slide">
+                        <a href="{$vo.rule}">
+                            <img class="swiper_img" src="{$vo.img}" />
+                        </a>
+                    </li>
+                {/volist}
             </ul>
             <div class="swiper-pagination"></div>
         </div>
     </div>
     <!-- 通知轮播 -->
-    <div class="news">
-        <div class="t_news">
-            <ul class="news_li">
-                <li>1 我爱北京天安门</li>
-                <li>2 我爱北京天安门</li>
-                <li>3 我爱北京天安门</li>
-                <li>4 我爱北京天安门</li>
-                <li>5 我爱北京天安门</li>
-            </ul>
-            <ul class="swap"></ul>
-            <img class="sound" src="img/sound.png">
-        </div>
-    </div>
+    <!--<div class="news">-->
+        <!--<div class="t_news">-->
+            <!--<ul class="news_li">-->
+                <!--<li>1 我爱北京天安门</li>-->
+                <!--<li>2 我爱北京天安门</li>-->
+                <!--<li>3 我爱北京天安门</li>-->
+                <!--<li>4 我爱北京天安门</li>-->
+                <!--<li>5 我爱北京天安门</li>-->
+            <!--</ul>-->
+            <!--<ul class="swap"></ul>-->
+            <!--<img class="sound" src="img/sound.png">-->
+        <!--</div>-->
+    <!--</div>-->
     <!-- 图片广告 -->
+    <br>
     <div class="picadbox">
-        <div class="picadleftbox"><a href="#"><img src="img/big01.jpg"></a></div>
+        {notempty name="article"}
+        <div class="picadleftbox">
+            <a href="#"><img src="{$article.0.cover}"></a>
+        </div>
+        {/notempty}
         <div class="picadrightbox">
-            <div class="picadrtop"><a href="#"><img src="img/big02.jpg"></a></div>
-            <div class="picadrbot"><a href="#"><img src="img/big03.jpg"></a></div>
+            <?php if(count($article) > 1){  ?>
+            <div class="picadrtop"><a href="#"><img src="{$article.1.cover}"></a></div>
+            <?php } ?>
+            <?php if(count($article) > 2){  ?>
+            <div class="picadrtop"><a href="#"><img src="{$article.2.cover}"></a></div>
+            <?php } ?>
         </div>
         <div class="clear"></div>
     </div>
     <!-- banner图 -->
     <div class="bannerbox">
-        <div class="bannerboxinner"><img src="img/banner.jpg"></div>
+        <div class="bannerboxinner"><img src="__ROOT__/customer/img/banner.jpg"></div>
     </div>
     <!-- 学校介绍 -->
     <div class="schoolbox">
         <div class="schoolboxinner">
-            <p class="schtitle">名牌私立学校</p>
-            <div class="bookpicbox"><img class="bookpic" src="img/book.jpg"></div>
-            <p class="schcon">学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授学校有正副教授</p>
+            <p class="schtitle">{$app_name}</p>
+            <div class="bookpicbox"><img class="bookpic" src="__ROOT__/customer/img/book.jpg"></div>
+            <dic class="schcon">
+                {$about.content|raw}
+            </dic>
         </div>
     </div>
     <p class="titlep">本校热门课程</p>
     <!-- 课程推荐 -->
     <div class="classbox">
         <div class="classboxinner">
-            <div class="classlibox">
-                <a href="#">
-                    <div class="classsmaboxl">
-                        <img src="img/classpic.jpg">
-                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
-                        <p class="classjj">快速突破</p>
-                        <p class="classpri">￥<span>99</span></p>
-                        <p class="classyy">已预约: <span>3</span></p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="classsmaboxr">
-                        <img src="img/classpic.jpg">
-                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
-                        <p class="classjj">快速突破</p>
-                        <p class="classpri">￥<span>99</span></p>
-                        <p class="classyy">已预约: <span>3</span></p>
-                    </div>
-                </a>
-                <div class="clear"></div>
-            </div>
-            <div class="classlibox">
-                <a href="#">
-                    <div class="classsmaboxl">
-                        <img src="img/classpic.jpg">
-                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
-                        <p class="classjj">快速突破</p>
-                        <p class="classpri">￥<span>99</span></p>
-                        <p class="classyy">已预约: <span>3</span></p>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="classsmaboxr">
-                        <img src="img/classpic.jpg">
-                        <p class="classname">零基础英语神速突破零基础英语神速突破</p>
-                        <p class="classjj">快速突破</p>
-                        <p class="classpri">￥<span>99</span></p>
-                        <p class="classyy">已预约: <span>3</span></p>
-                    </div>
-                </a>
-                <div class="clear"></div>
-            </div>
+            {volist name="cates" id="vo" mod="2" length='10'}
+            {eq name="mod" value="0"}<div class="classlibox">{/eq}
+            <a href="#">
+                <div class="classsmaboxl">
+                    <img src="__ROOT__/customer/img/classpic.jpg">
+                    <p class="classname">零基础英语神速突破零基础英语神速突破</p>
+                    <p class="classjj">快速突破</p>
+                    <p class="classpri">￥<span>99</span></p>
+                    <p class="classyy">已预约: <span>3</span></p>
+                </div>
+            </a>
+            {eq name="mod" value="1"} <div class="clear"></div></div>{/eq}
+            {/volist}
         </div>
     </div>
-    <!-- 技术支持 -->
-    <div class="jszc">
-        <p>遛弯小分队提供技术支持</p>
-    </div>
+
 </div>
 <!-- 底部菜单栏 -->
 
 
 {/block}
 
+{block name='script'}
 <script type="text/javascript">
     $(function() {
         // 轮播图
@@ -221,3 +163,5 @@
         }
     })
 </script>
+{/block}
+
