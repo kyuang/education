@@ -62,10 +62,7 @@ class Product extends CommonController
         $this->title = '明细';
 
         $id = input('id');
-        $detail = $this->app->db->name($this->table)->where(['id'=>$id])
-            ->where(['id' => $id])->find();
-
-
+        $detail = $this->app->db->name($this->table)->where(['id'=>$id])->find();
         $detail['slider'] = empty($detail['slider']) ? [] : explode('|',$detail['slider']);
 
         $cat_id = $detail['cate'];

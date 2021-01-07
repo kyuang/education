@@ -62,7 +62,6 @@
         </div>
     </div>
     <!-- 图片广告 -->
-    <br>
     <div class="picadbox">
         {notempty name="article"}
         <div class="picadleftbox">
@@ -103,7 +102,7 @@
     <!-- 课程推荐 -->
     <div class="classbox">
         <div class="classboxinner">
-            {volist name="cates" id="vo" mod="2" length='10'}
+            {volist name="product" id="vo" mod="2" length='10'}
             {eq name="mod" value="0"}<div class="classlibox">{/eq}
             <a href="{:url('index/product/details')}?id={$vo.id}">
                 <div class="classsmaboxl">
