@@ -23,6 +23,9 @@ use app\data\service\GoodsService;
  */
 class Index extends CommonController
 {
+
+
+
     public function index()
     {
         $cates = GoodsService::instance()->getCateList();
@@ -38,6 +41,8 @@ class Index extends CommonController
         $query->like('mark',['mark'=>'首页']);
         $query->where(['deleted' => 0])->order('sort desc,id desc')->limit(3);
         $this->article = $query->query->select()->toArray();
+
+        $this->notice = sysconf('notice');
         //商品
         $query = $this->_query('ShopGoods');
         $query->like('mark',['mark'=>'热门']);
@@ -50,8 +55,24 @@ class Index extends CommonController
     public function kecheng()
     {
         $this->title = '课程';
-        $this->assign('selected', 1);
-        $this->assign('list', []);
+
+        $page = $this->request->get('page',1);
+        $map = ['deleted' => 0];
+        $data_list = $this->app->db->name('ShopGoods')->field(['*'])
+            ->where($map)->order('sort desc,id desc')
+            ->page($page,$this->page_size)
+            ->select()->toArray();
+
+        foreach ($data_list as &$item){
+
+            $cat_id = $item['cate'];
+            $cates = $this->app->db->name('ShopGoodsCate')->where(['id' => $cat_id])->find();
+            $item['cat_name'] = $cates['name'];
+        }
+
+        $this->assign('page',$page);
+        $this->assign('page_size',$this->page_size);
+        $this->assign('product_list',$data_list);
         $this->fetch('list');
     }
 

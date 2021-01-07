@@ -26,6 +26,8 @@ use think\App;
 class CommonController extends Controller
 {
 
+    public $page_size = 10;
+
     public function __construct(App $app)
     {
         parent::__construct($app);

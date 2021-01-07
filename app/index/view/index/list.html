@@ -1,31 +1,28 @@
 {extend name="common/common"}
 {block name='header'}
 <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/list.css">
+<style>
+	.listboxinner img{
+		max-height: 320px;
+	}
+</style>
 {/block}
 {block name='content'}
 <div class="outbox">
 	<!-- 课程列表li -->
+
+	{volist name="product_list" id="vo"}
 	<div class="listbox">
 		<div class="listboxinner">
-			<div class="listimgbox"><img class="listimg" src="__ROOT__/customer/img/kec.png" ></div>
+			<div class="listimgbox"><img class="listimg" src="{$vo.cover}" ></div>
 			<div class="listbotbox">
-				<p class="listbotboxpt">专业初高中辅导名师</p>
-				<p class="listbotboxpm">一对一</p>
-				<p class="listbotboxpb">￥<span>199.00</span></p>
+				<p class="listbotboxpt">{$vo.name}</p>
+				<p class="listbotboxpm">{$vo.cat_name}</p>
+				<p class="listbotboxpb">￥<span>{$vo.price_selling}</span></p>
 				<a class="rightbtn" href="#">立即预约</a>
 			</div>
 		</div>
 	</div>
-	<div class="listbox">
-		<div class="listboxinner">
-			<div class="listimgbox"><img class="listimg" src="__ROOT__/customer/img/kec.png" ></div>
-			<div class="listbotbox">
-				<p class="listbotboxpt">专业初高中辅导名师</p>
-				<p class="listbotboxpm">一对一</p>
-				<p class="listbotboxpb">￥<span>199.00</span></p>
-				<a class="rightbtn" href="#">立即预约</a>
-			</div>
-		</div>
-	</div>
+	{/volist}
 </div>
 {/block}
