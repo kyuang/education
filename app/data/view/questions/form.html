@@ -2,13 +2,24 @@
     <div class="layui-card-body padding-left-40">
         <label class="layui-form-item relative block">
             <span class="color-green font-w7">题目</span>
-            <span class="color-desc margin-left-5">Mark Name</span>
+            <span class="color-desc margin-left-5">Question</span>
             <input class="layui-input" required placeholder="请输入题目" name="question" value="{$vo.question|default=''}"/>
             <span class="help-block"><b>必填，</b>请填写题目（如：1+1=？），建议字符不要太长，一般小于200</span>
         </label>
+        <div class="layui-form-item relative block">
+            <span class="color-green font-w7 label-required-prev">题目插图</span>
+            <span class="color-desc margin-left-5">Conver Image</span>
+            <label class="relative block label-required-null">
+                <input required name="picture" value='{$vo.picture|default=""}' placeholder="请上传插图&nbsp;&nbsp;&nbsp;&nbsp;" class="layui-input">
+                <a data-file data-type="png,jpg,gif" data-field="picture" class="input-right-icon layui-icon layui-icon-upload"></a>
+                <script>$('[name="picture"]').uploadOneImage()</script>
+            </label>
+        </div>
+
+
         <div class="layui-form-item relative block label-required-prev">
-            <span class="color-green font-w7">题目</span>
-            <span class="color-desc margin-left-5">Mark Name &nbsp;&nbsp;&nbsp;</span>
+            <span class="color-green font-w7">单选项</span>
+            <span class="color-desc margin-left-5">Options &nbsp;&nbsp;&nbsp;</span>
             <button class="layui-btn layui-btn-sm" type="button" id="add_option">添加选项</button>
             <div style="border: 1px solid #ccc;margin-top: 3px;" class="option_div">
                 {empty name='$vo.options'}

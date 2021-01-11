@@ -51,4 +51,26 @@ class UserService extends Service
         $this->app->session->destroy();
         return true;
     }
+
+    /**
+     * 登录
+     * @param $username
+     * @param $password
+     * @return array
+     */
+    public function loginByPassword($username, $password)
+    {
+        if (empty($username) || empty($password)) {
+            return alert_info(1, '参数错误！');
+        }
+        $user_info = $this->app->db->name('DataUser')->where(['username' => $username])->find();
+        if (empty($user_info)) {
+            return alert_info(1, '用户不存在！');
+        }
+        //校验密码
+        if (md5($user_info['password']) !== $password) {
+            return alert_info(1, '密码错误！');
+        }
+        return $this->doLogin($user_info['id']);
+    }
 }

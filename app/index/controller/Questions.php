@@ -56,13 +56,14 @@ class Questions extends CommonController
      */
     public function answers()
     {
+        $page = input('page', 1);
         $this->title = '答题记录';
         $cate_id = intval(input('cate_id', 0));
         if ($cate_id <= 0) {
             return easy_tip('参数错误！', ['code' => 1, 'url' => url('questions/index'), 'seconds' => 5]);
         }
         //查询所有试卷数量
-        $data_list = $this->app->db->name('DataQuestionsGroup')->where(['cate_id' => $cate_id, 'status' => 1, 'deleted' => 0])->order('id asc')->select()->toArray();
+        $data_list = $this->app->db->name('DataQuestionsGroup')->where(['cate_id' => $cate_id, 'status' => 1, 'deleted' => 0])->order('id desc')->page($page, $this->page_size)->select()->toArray();
         $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         foreach ($data_list as $key => &$item) {
@@ -77,6 +78,8 @@ class Questions extends CommonController
         }
         $this->assign('data_list', $data_list);
         $this->assign('selected', 4);
+        $this->assign('page', $page);
+        $this->assign('cate_id',$cate_id);
         $this->fetch('questions/answers');
     }
 

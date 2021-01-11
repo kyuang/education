@@ -122,6 +122,19 @@ class QuestionsGroup extends Controller
     }
 
     /**
+     * 状态修改回调
+     * @param $query
+     * @param $data
+     */
+    public function _save_filter($query,&$data)
+    {
+        $cur_date = date('Y-m-d H:i:s');
+        $operator = session('user.username') . '(' . session('user.id') . ')';
+        $data['update_at'] = $cur_date;
+        $data['update_by'] = $operator;
+    }
+
+    /**
      * 删除试题
      * @auth true
      * @throws \think\db\exception\DbException

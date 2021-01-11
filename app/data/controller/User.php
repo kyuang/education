@@ -47,4 +47,32 @@ class User extends Controller
         ]));
     }
 
+    /**
+     * 修改用户密码
+     * @auth true
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\DbException
+     * @throws \think\db\exception\ModelNotFoundException
+     */
+    public function pass()
+    {
+        $this->_applyFormToken();
+        if ($this->request->isGet()) {
+            $this->verify = false;
+            $this->_form($this->table, 'pass');
+        } else {
+            $data = $this->_vali([
+                'id.require'                  => '用户ID不能为空！',
+                'password.require'            => '登录密码不能为空！',
+                'repassword.require'          => '重复密码不能为空！',
+                'repassword.confirm:password' => '两次输入的密码不一致！',
+            ]);
+            if (data_save($this->table, ['id' => $data['id'], 'password' => md5($data['password'])], 'id')) {
+                sysoplog('CRM用户管理', "修改用户[{$data['id']}]密码成功");
+                $this->success('密码修改成功！', '');
+            } else {
+                $this->error('密码修改失败，请稍候再试！');
+            }
+        }
+    }
 }

@@ -42,6 +42,9 @@
                 注册时间：{$vo.create_at|format_datetime}
             </td>
             <td class="nowrap">
+                <!--{if auth("pass")}-->
+                <a class="layui-btn layui-btn-sm layui-btn-normal" data-title="设置密码" data-modal='{:url("pass")}?id={$vo.id}'>密 码</a>
+                <!--{/if}-->
                 <!--{if auth("state") and $vo.status eq 1}-->
                 <a class="layui-btn layui-btn-sm layui-btn-danger" data-action="{:url('state')}" data-value="id#{$vo.id};status#0">冻结账号</a>
                 <!--{/if}-->

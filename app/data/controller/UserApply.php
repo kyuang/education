@@ -65,22 +65,18 @@ class UserApply extends Controller
     {
         $is_post = request()->isPost();
         //获取分类
-        $map = ['pid'=>0,'status'=>1,'deleted'=>0];
-        $cate_list = $this->app->db->name('ShopGoodsCate')->field(['id','name'])->where($map)->order('sort desc,id desc')->select()->toArray();
-        $this->assign('cate_list',$cate_list);
-        if ($is_post)
-        {
+        $map = ['pid' => 0, 'status' => 1, 'deleted' => 0];
+        $cate_list = $this->app->db->name('ShopGoodsCate')->field(['id', 'name'])->where($map)->order('sort desc,id desc')->select()->toArray();
+        $this->assign('cate_list', $cate_list);
+        if ($is_post) {
             if (empty($data['title'])) $this->error('请输入标题');
             if (!is_numeric($data['cate_id']) || $data['cate_id'] <= 0) $this->error('请选择对应课程！');
             $cur_date = date('Y-m-d H:i:s');
-            $operator  = session('user.username').'('.session('user.id').')';
-            if (isset($data['id']) && $data['id'] > 0)
-            {
+            $operator = session('user.username') . '(' . session('user.id') . ')';
+            if (isset($data['id']) && $data['id'] > 0) {
                 $data['update_at'] = $cur_date;
                 $data['update_by'] = $operator;
-            }
-            else
-            {
+            } else {
                 $data['create_at'] = $cur_date;
             }
         }
@@ -94,9 +90,22 @@ class UserApply extends Controller
     public function state()
     {
         $this->_save($this->table, $this->_vali([
-            'status.in:0,1'  => '状态值范围异常！',
+            'status.in:0,1' => '状态值范围异常！',
             'status.require' => '状态值不能为空！',
         ]));
+    }
+
+    /**
+     * 状态修改回调
+     * @param $query
+     * @param $data
+     */
+    public function _save_filter($query,&$data)
+    {
+        $cur_date = date('Y-m-d H:i:s');
+        $operator = session('user.username') . '(' . session('user.id') . ')';
+        $data['update_at'] = $cur_date;
+        $data['update_by'] = $operator;
     }
 
     /**

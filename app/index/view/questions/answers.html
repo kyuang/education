@@ -19,6 +19,10 @@
 		font-size: 0.14rem;
 		color: #888888;
 	}
+	.liuyanpage a{
+		text-align: center;
+		color: #4f4f4f;
+	}
 </style>
 {/block}
 {block name='content'}
@@ -43,6 +47,14 @@
 				</a>
 			</div>
 		{/foreach}
+		<div class="liuyanpage">
+			{if $page gt 1}
+			<a href="{:url('questions/answers')}?cate_id={$cate_id}&page={$page - 1}" class="liuyanpre">上一页</a>
+			{/if}
+			{if count($data_list) egt $page_size}
+			<a href="{:url('questions/answers')}?cate_id={$cate_id}&page={$page + 1}" class="liuyannext">下一页</a>
+			{/if}
+		</div>
 	{/empty}
 </div>
 {/block}

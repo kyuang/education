@@ -13,7 +13,7 @@
 </style>
 {/block}
 {block name='content'}
-<div class="quelistoutbox" style="min-height: 500px;">
+<div class="quelistoutbox" style="">
 	<div class="quelisttibox"><a href="{:url('user_msg/create')}">新建留言</a></div>
 	{empty name="data_list"}
 		<div class="liuyanlistbox">
@@ -31,14 +31,14 @@
 				</a>
 			</div>
 		{/foreach}
+		<div class="liuyanpage">
+			{if $page gt 1}
+			<a href="{:url('user_msg/index')}?page={$page - 1}" class="liuyanpre">上一页</a>
+			{/if}
+			{if count($data_list) egt $page_size}
+			<a href="{:url('user_msg/index')}?page={$page + 1}" class="liuyannext">下一页</a>
+			{/if}
+		</div>
 	{/empty}
-	<div class="liuyanpage">
-		{if $page gt 1}
-		<a href="{:url('user_msg/index')}?page={$page - 1}" class="liuyanpre">上一页</a>
-		{/if}
-		{if count($data_list) egt $page_size}
-		<a href="{:url('user_msg/index')}?page={$page + 1}" class="liuyannext">下一页</a>
-		{/if}
-	</div>
 </div>
 {/block}

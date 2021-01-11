@@ -24,7 +24,6 @@ namespace app\index\controller;
 class UserMsg extends CommonController
 {
     protected $middleware = ['app\middleware\Auth'];
-    public $page_size = 10;
 
     /**
      * 留言

@@ -15,7 +15,6 @@
 
 namespace app\index\controller;
 
-use app\data\service\GoodsService;
 use think\admin\Controller;
 use think\App;
 

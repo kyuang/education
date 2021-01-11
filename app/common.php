@@ -74,12 +74,3 @@ function isMobile($mobile, $match = '/^((\+86)?(1[3|4|5|6|7|8|9]\d{9}))$/')
     }
     return preg_match($match, $mobile);
 }
-
-/**
- * 获取文件路径
- * @param $file_name
- * @return string
- */
-function crmPath($file_name){
-    return __ROOT__."/customer/".$file_name;
-}
