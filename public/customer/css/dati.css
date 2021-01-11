@@ -42,6 +42,12 @@
 	font-size: 0.34rem;
 	color: #000000;
 }
+
+.anwimg{
+	max-width: 100%;
+	 
+}
+
 .qeliint{
 	display: block;
 	width: 100%;

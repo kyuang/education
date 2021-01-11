@@ -1,0 +1,69 @@
+.backchange{
+	background-color: #fff;
+}
+.loginbox {
+	width: 100%;
+	
+}
+.loginitop{
+	height: 3rem;
+	 background-color: #37be01; 
+	width: 100%;
+	margin-bottom: 0.6rem;
+}
+.user{
+	width: 75%;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	margin: 0 auto;
+	border-bottom: 1px solid #eee;
+	font-size: 0.3rem;
+}
+.userle{
+	vertical-align: middle;
+	display: inline-block;
+	width: 1.7rem;
+}
+.userint{
+	font-size: 0.24rem;
+	vertical-align: middle;
+}
+.bnttj{
+	width: 75%;
+	margin: 0 auto;
+	height: 0.7rem;
+	background-color: #37be01;
+	line-height: 0.7rem;
+	font-size: 0.28rem;
+	margin-top: 0.6rem;
+	color: #fff;
+	text-align: center;
+	border-radius: 0.05rem;
+	
+}
+.bntinpt{
+	font-size: 0.28rem;
+	background-color: #37be01;
+	color: #fff;
+
+}
+
+.mimale{
+	width: 75%;
+	display: block;
+	margin: 0 auto;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	font-size: 0.28rem;
+	margin-top: 0.2rem;
+	color: #9E9E9E;!important;
+	text-align: center;
+	border-radius: 0.05rem;
+}
+
+.denglux{
+	display: none;
+}
+.zhucex{
+	display: none;
+}
