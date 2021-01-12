@@ -32,7 +32,7 @@ class UserService extends Service
      * @param $user_id
      * @return array
      */
-    private function doLogin($user_id)
+    public function doLogin($user_id)
     {
         $user_info = $this->app->db->name('DataUser')->where(['id' => $user_id])->find();
         if (empty($user_info)) {

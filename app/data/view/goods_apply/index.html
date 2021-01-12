@@ -1,0 +1,72 @@
+{extend name="../../admin/view/main"}
+
+{block name="button"}
+<!--{if auth("remove")}-->
+<button data-action='{:url("remove")}' data-rule="id#{key}" data-confirm="确定要删除这些记录吗？" class='layui-btn layui-btn-sm layui-btn-primary'>删除记录</button>
+<!--{/if}-->
+{/block}
+
+{block name='content'}
+<div class="think-box-shadow table-block">
+    <!--<p class=" margin-bottom-15">
+        演示接口文档：<a target="_blank" href="http://www.docway.net/project/1WkI0ZyQ7M1/share/1Wld0z7b1zE">http://www.docway.net/project/1WkI0ZyQ7M1/share/1Wld0z7b1zE</a>
+    </p>-->
+    {include file='user_apply/index_search'}
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-check-td think-checkbox'>
+                <label><input data-auto-none data-check-target='.list-check-box' type='checkbox'/></label>
+            </th>
+            <th class="text-left nowrap">课程</th>
+            <th class="text-left nowrap">姓名</th>
+            <th class="text-left nowrap">手机号</th>
+            <th class="text-left nowrap">留言</th>
+            <th class="text-left nowrap">处理状态</th>
+            <th class="text-left nowrap">创建信息</th>
+            <th class="text-left nowrap">修改信息</th>
+            <th class="text-left nowrap"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick>
+            <td class='list-table-check-td think-checkbox'>
+                <label><input class="list-check-box" value='{$vo.id}' type='checkbox'/></label>
+            </td>
+            <td class="text-left nowrap">
+                {$vo.product_id|default=''}
+                <br/>
+                {$vo.pro_name|default=''}
+            </td>
+            <td class="text-left nowrap">{$vo.username|default=''}</td>
+            <td class="text-left nowrap">{$vo.mobile|default=''}</td>
+            <td class="text-left nowrap">{$vo.message|default=''}</td>
+            <td>{if $vo.status eq 0}<span class="color-red">未处理</span>{elseif $vo.status eq 1}<span class="color-green">已处理</span>{/if}</td>
+            <td class="text-left nowrap">
+                创建时间：{$vo.create_at|format_datetime}
+            </td>
+            <td class="text-left nowrap">
+                操作人：{$vo.update_by}<br/>
+                操作时间：{$vo.update_at|format_datetime}
+            </td>
+            <td class='text-left nowrap'>
+                {if auth("state") and $vo.status eq 1}
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('state')}" data-value="id#{$vo.id};status#0">标记未处理</a>
+                {/if}
+                {if auth("state") and $vo.status eq 0}
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('state')}" data-value="id#{$vo.id};status#1">标记处理</a>
+                {/if}
+                {if auth("remove")}
+                <a class="layui-btn layui-btn-sm layui-btn-danger" data-confirm="确定要删除该标签吗？" data-action="{:url('remove')}" data-value="id#{$vo.id}">删 除</a>
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+{/block}
