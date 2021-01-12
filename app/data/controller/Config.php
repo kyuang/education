@@ -65,7 +65,7 @@ class Config extends Controller
     {
         $this->skey = 'intro';
         $this->title = '学校简介';
-        $this->__sysdata('content');
+        $this->__sysdata('intro');
     }
 
     /**

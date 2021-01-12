@@ -43,7 +43,7 @@ class Index extends Controller
         /*! 判断当前用户的登录状态 */
         $this->login = AdminService::instance()->isLogin();
         /*! 菜单为空且未登录跳转到登录页 */
-        if (empty($this->menus) && empty($this->login)) {
+        if (empty($this->menus) || empty($this->login)) {
             $this->redirect(sysuri('admin/login/index'));
         } else {
             $this->title = '系统管理后台';
