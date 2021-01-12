@@ -106,22 +106,6 @@ class RegisterService extends Service
      */
     public function store()
     {
-        // halt($request->param());
-        $rule=[
-            'username'=>'require|length:5,20|token',
-            'password'=>'require'
-        ];
-        $message=[
-            'username.require'=>'用户名不能为空！',
-            'username.length'=>'用户名长度必须在5到20之间！',
-            'password.require'=>'密码不能为空！'
-        ];
-
-        $validate = new \think\Validate($rule,$message);
-        $result=$validate->check(request()->param());
-        halt($validate->getError());
-
-
         $required_params = ['username', 'password'];
         foreach ($required_params as $param) {
             if (!isset($this->data[$param])) {
@@ -131,7 +115,12 @@ class RegisterService extends Service
         if (!empty($this->errors)) {
             return alert_info(1, $this->errors[0], $this->errors);
         }
-        $add_res = $this->app->db->name('DataUser')->insertGetId($this->data);
+        $data = [
+            'username'=>$this->data['username'],
+            'password'=>md5($this->data['password']),
+            'create_at'=>date('Y-m-d H:i:s')
+        ];
+        $add_res = $this->app->db->name('DataUser')->insertGetId($data);
         if (!$add_res) {
             return alert_info(1, '注册失败！');
         }

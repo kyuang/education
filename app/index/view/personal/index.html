@@ -9,11 +9,13 @@
 <div class="myheadbox">
 	<div class="myheadtx"><img class="myheadtximg" src="{$user_info.headimg}" ></div>
 	<div class="myheadname">{$user_info['username']}</div>
+	<div class="myheadjieshao"><a href="{:url('index/personal/logout')}" id="logout">退出登录</a></div>
 	<!--<div class="myheadjieshao">这个人很懒，什么都没留下</div>-->
 </div>
 <div class="mymainbox">
 	<a class="mymainboxli" href="{:url('user_msg/index')}">留言记录<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>
 	<a class="mymainboxli" href="{:url('questions/index')}">在线答题<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>
+	<a class="mymainboxli" href="{:url('personal/password')}">修改密码<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>
 	<!--<a class="mymainboxli" href="#">查看个人信息<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>
 	<a class="mymainboxli" href="#">修改个人信息<img class="youjiantou" src="__ROOT__/customer/img/ri.jpg" ></a>-->
 </div>

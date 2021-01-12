@@ -11,7 +11,6 @@ use think\admin\Service;
  */
 class UserService extends Service
 {
-
     /**
      * 获取登录信息
      * @return array
@@ -19,7 +18,6 @@ class UserService extends Service
     public function loginInfo()
     {
         $user_info = $this->app->session->get('crm');
-//        $user_info = ['id' => 1];
         $user_id = intval($user_info['id']);
         if ($user_id > 0) {
             return alert_info(0, '登录成功！', $user_info);
@@ -69,13 +67,14 @@ class UserService extends Service
             return alert_info(1, '用户不存在！');
         }
         //校验密码
-        if (md5($user_info['password']) !== $password) {
+        if ($user_info['password'] !== md5($password)) {
             return alert_info(1, '用户名或密码错误！');
         }
         return $this->doLogin($user_info['id']);
     }
 
     /**
+     * 修改密码
      * @param $old_password
      * @param $new_password
      * @return array
@@ -88,17 +87,16 @@ class UserService extends Service
         }
         $user_id = $user_info['id'];
         //校验密码
-        if (md5($user_info['password']) !== $old_password) {
+        if ($user_info['password'] !== md5($old_password)) {
             return alert_info(1, '旧密码错误！');
         }
-         $res = $this->app->db->name('DataUser')->where(['id' => $user_id])
-             ->update(['password'=>md5($new_password)]);
-        if($res === false){
-            return alert_info(1,'修改失败');
+        $res = $this->app->db->name('DataUser')->where(['id' => $user_id])
+            ->update(['password' => md5($new_password)]);
+        if ($res === false) {
+            return alert_info(1, '修改失败');
         }
         return alert_info(0, '操作成功！');
     }
-
 
 
     /**
@@ -122,15 +120,15 @@ class UserService extends Service
         }
 
         $data = [
-            'username'=>$username,
-            'password'=>md5($password),
-            'create_at'=>date('Y-m-d H:i:s')
+            'username' => $username,
+            'password' => md5($password),
+            'create_at' => date('Y-m-d H:i:s')
         ];
 
         $res = $this->app->db->name('DataUser')
             ->insertGetId($data);
-        if($res === false){
-            return alert_info(1,'注册失败');
+        if ($res === false) {
+            return alert_info(1, '注册失败');
         }
         return alert_info(0, '注册成功！');
     }

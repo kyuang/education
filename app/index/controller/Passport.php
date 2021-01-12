@@ -28,56 +28,52 @@ use app\index\service\user\UserService;
 class Passport extends CommonController
 {
     /**
-     * 登录页面
+     * 登录
      */
     public function login()
     {
-        $this->assign('list', []);
-        $this->fetch();
+        $request = request();
+        $redirect_url = input('redirect_url');
+        if (!empty($redirect_url)) {
+            $redirect_url = base64_decode($redirect_url);
+        }
+        if ($request->isPost()) {
+            $username = input('username');
+            $password = input('password');
+
+            $UserService = UserService::instance();
+            return $UserService->loginByPassword($username, $password);
+        } else {
+            $this->assign('redirect_url', $redirect_url);
+            $this->fetch();
+        }
     }
 
     /**
-     * 注册页面
+     * 注册
      */
     public function register()
     {
-        $this->assign('list', []);
-        $this->fetch();
-    }
+        $request = request();
+        if ($request->isPost()) {
+            $username = input('username');
+            $nickname = input('nickname');
+            $password = input('password');
+            $password2 = input('password2');
 
-    /**
-     * 执行登录
-     * @return array
-     */
-    public function doLogin()
-    {
-        $username = input('username');
-        $password = input('password');
-
-        $UserService = UserService::instance();
-        return $UserService->loginByPassword($username, $password);
-    }
-
-    /**
-     * 执行注册并登录
-     */
-    public function doReg()
-    {
-        $username = input('username');
-        $nickname = input('nickname');
-        $password = input('password');
-        $password2 = input('password2');
-
-        $RegisterService = RegisterService::instance();
-        $reg_res = $RegisterService
-            ->setUsername($username)
-            ->setNickname($nickname)
-            ->setPassword($password, $password2)
-            ->store();
-        if ($reg_res['code'] !== 0) {
-            return $reg_res;
+            $RegisterService = RegisterService::instance();
+            $reg_res = $RegisterService
+                ->setUsername($username)
+                ->setNickname($nickname)
+                ->setPassword($password, $password2)
+                ->store();
+            if ($reg_res['code'] !== 0) {
+                return $reg_res;
+            }
+            $UserService = UserService::instance();
+            return $UserService->doLogin($reg_res['data']['id']);
+        } else {
+            $this->fetch();
         }
-        $UserService = UserService::instance();
-        return $UserService->doLogin($reg_res['data']['id']);
     }
 }

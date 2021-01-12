@@ -43,7 +43,6 @@ class CommonController extends Controller
     public function getCrmInfo()
     {
         $user_info = $this->app->session->get('crm');
-        $user_info = ['id'=>1,'username'=>'aaa'];
         return (array)$user_info;
     }
 }

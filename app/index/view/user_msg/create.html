@@ -47,12 +47,26 @@
             }
         }, 1000);
     }
+    /**
+	 * 设置不能点击
+     */
+    function setDisabled() {
+        $('#sub').removeClass('tijiaobtn');
+        $('#sub').addClass('disabledBtn');
+        $('#sub').attr('disabled',"true");
+    }
+    /**
+	 * 取消不能点击
+     */
+    function cancelDisabled() {
+        $('#sub').addClass('tijiaobtn');
+        $('#sub').removeClass('disabledBtn');
+        $('#sub').removeAttr("disabled");
+    }
     $(function () {
         $('#p_form').submit(
             function () {
-                $('#sub').removeClass('tijiaobtn');
-                $('#sub').addClass('disabledBtn');
-                $('#sub').attr('disabled',"true");
+                setDisabled();
                 var form_data = $('#p_form').serialize();
                 $.ajax({
                     type:"POST",                      //请求类型
@@ -67,15 +81,11 @@
 						else{
                             layer.msg(data.info);
 						}
-                        $('#sub').addClass('tijiaobtn');
-                        $('#sub').removeClass('disabledBtn');
-                        $('#sub').removeAttr("disabled");
+                        cancelDisabled();
                     },
                     error:function(data){
                         layer.msg('系统异常，请稍后重试！');
-                        $('#sub').addClass('tijiaobtn');
-                        $('#sub').removeClass('disabledBtn');
-                        $('#sub').removeAttr("disabled");
+                        cancelDisabled();
                     }
                 });
             }

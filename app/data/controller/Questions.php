@@ -86,14 +86,15 @@ class Questions extends Controller
         }
         $this->assign('group_info', $group_info);
         if ($is_post) {
-            if (empty($data['question'])) $this->error('请输入题目');
+            if (empty($data['question']) && empty($data['picture'])) {
+                $this->error('题目或图片，必须设置一个！');
+            }
             if (!is_array($data['answers_val']) || empty($data['answers_val'])) $this->error('未设置选项！');
             if (empty($data['answers'])) $this->error('未设置正确答案！');
             $options = [];
             foreach ($data['answers_val'] as $key => $val) {
                 $val = trim($val);
-                if (empty($val))
-                {
+                if (empty($val)) {
                     $error_key = $key + 1;
                     $this->error("第{$error_key}个选项不能为空！");
                 }
@@ -138,7 +139,7 @@ class Questions extends Controller
      * @param $query
      * @param $data
      */
-    public function _save_filter($query,&$data)
+    public function _save_filter($query, &$data)
     {
         $cur_date = date('Y-m-d H:i:s');
         $operator = session('user.username') . '(' . session('user.id') . ')';

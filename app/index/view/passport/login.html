@@ -1,0 +1,142 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/login.css">
+<style>
+    #mimale {
+        width: 75%;
+        display: block;
+        margin: 0 auto;
+        height: 0.7rem;
+        line-height: 0.7rem;
+        font-size: 0.28rem;
+        margin-top: 0.2rem;
+        color: #9E9E9E;
+    !important;
+        text-align: center;
+        border-radius: 0.05rem;
+    }
+
+    .distj {
+        width: 75%;
+        margin: 0 auto;
+        height: 0.7rem;
+        background-color: #ccc;
+        line-height: 0.7rem;
+        font-size: 0.28rem;
+        margin-top: 0.6rem;
+        color: #fff;
+        text-align: center;
+        border-radius: 0.05rem;
+
+    }
+
+    .disinpt {
+        font-size: 0.28rem;
+        background-color: #ccc;
+        color: #fff;
+
+    }
+</style>
+{/block}
+{block name='content'}
+<div class="outbox backchange">
+    <!-- 课程列表li -->
+    <div class="loginbox">
+        <div class="loginitop"></div>
+        <!-- 登录 -->
+        <form onsubmit="return false" id="p_form" method="post" action="{:url('index/passport/login')}">
+            <div class="user">
+                <span class="userle">用户名</span>
+                <input id="user_name" name="user_name" type="text" placeholder="请输入用户名" class="userint"/>
+            </div>
+            <div class="user">
+                <span class="userle">密 码</span>
+                <input id="password" name="password" type="password" placeholder="请输入密码" class="userint"/>
+            </div>
+            <div class="bnttj" id="tjBtn">
+                <button id="sub" class="bntinpt" type="submit">登录</button>
+            </div>
+        </form>
+        <a id="mimale" href="{:url('index/passport/register')}" class="mimale">账户注册</a>
+    </div>
+</div>
+{/block}
+
+{block name='script'}
+<script type="text/javascript">
+
+    /**
+     * 跳转
+     * @param count
+     * @param url
+     */
+    function jump(count, url) {
+        window.setTimeout(function () {
+            count--;
+            if (count > 0) {
+                //$('#num').attr('innerHTML', count);
+                jump(count, url);
+            } else {
+                location.href = url;
+            }
+        }, 1000);
+    }
+    /**
+     * 设置不能点击
+     */
+    function setDisabled() {
+        $('#tjBtn').removeClass('bnttj');
+        $('#tjBtn').addClass('distj');
+        $('#sub').removeClass('bntinpt');
+        $('#sub').addClass('disinpt');
+        $('#sub').attr('disabled', "true");
+    }
+    /**
+     * 取消不能点击
+     */
+    function cancelDisabled() {
+        $('#tjBtn').removeClass('distj');
+        $('#tjBtn').addClass('bnttj');
+        $('#sub').removeClass('disinpt');
+        $('#sub').addClass('bntinpt');
+        $('#sub').removeAttr("disabled");
+    }
+    $('#p_form').submit(function () {
+        var jump_url = '{$redirect_url}';
+        if (!jump_url) {
+            jump_url = "{:url('index')}";
+        }
+        var user_name = $('#user_name').val();
+        var password = $('#password').val();
+        if (user_name == '') {
+            layer.msg('请输入用户名');
+            return;
+        }
+        if (password == '') {
+            layer.msg('请输入密码');
+            return;
+        }
+        setDisabled();
+        $.ajax({
+            type: "POST",                      //请求类型
+            url: "{:url('index/passport/login')}",           //URL
+            data: {username: user_name, password: password},   //传递的参数
+            dataType: "json",                 //返回的数据类型
+            success: function (data) {          //data就是返回的json类型的数据
+                if (data.code == 0) {
+                    layer.msg(data.msg);
+                    jump(2, jump_url)
+                }
+                else {
+                    layer.msg(data.msg);
+                    cancelDisabled();
+                }
+            },
+            error: function (data) {
+                layer.msg('系统异常，请稍后重试！');
+                cancelDisabled();
+            }
+        });
+    });
+</script>
+{/block}

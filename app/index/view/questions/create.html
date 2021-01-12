@@ -28,7 +28,11 @@
             {foreach $data_list as $key=>$vo}
             <div class="firque" id="q_{$vo.id}">
                 <div class="queli">
-                    <span class="bigspanfont">{$key+1}、</span>{$vo.question}
+                    <span class="bigspanfont">{$key+1}、</span>
+                    <span>{$vo.question}</span>
+                    {notempty name="vo.picture"}
+                    <img class="anwimg" src="{$vo.picture}" alt="{$vo.question}">
+                    {/notempty}
                 </div>
 
                 <!--<div class="quelibox quecheked"><label><input class="qeliint" type="radio" name="ti1" value="男"/><span class="spanlab"><span
