@@ -32,20 +32,32 @@
 .queli{
 	font-size: 0.26rem;
 	color: #333333;
-	width: 80%;
+	width: 85%;
 	margin: 0 auto;
 	line-height: 0.4rem;
 	margin-bottom: 0.2rem;
+	overflow: hidden;
 	
 }
+.xuhaol{
+	float: left;
+	width: 10%;
+	text-align: center;
+}
+.xuhaor{
+	float: left;
+	width: 90%;
+}
 .bigspanfont{
-	font-size: 0.34rem;
+	font-size: 0.26rem;
 	color: #000000;
 }
 
 .anwimg{
-	max-width: 100%;
-	 
+	min-height: 70%;
+	max-width: 90%;
+	min-height: 2rem;
+	max-height: 3rem;
 }
 
 .qeliint{

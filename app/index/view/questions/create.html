@@ -28,16 +28,18 @@
             {foreach $data_list as $key=>$vo}
             <div class="firque" id="q_{$vo.id}">
                 <div class="queli">
-                    <span class="bigspanfont">{$key+1}、</span>
-                    <span>{$vo.question}</span>
-                    {notempty name="vo.picture"}
-                    <img class="anwimg" src="{$vo.picture}" alt="{$vo.question}">
-                    {/notempty}
+                    <div class="xuhaol">
+                        <span class="bigspanfont">{$key+1}、</span>
+                    </div>
+                    <div class="xuhaor">
+                        {notempty name="vo.question"}
+                        <span>{$vo.question}</span>
+                        {/notempty}
+                        {notempty name="vo.picture"}
+                        <img class="anwimg" src="{$vo.picture}" alt="{$vo.question}">
+                        {/notempty}
+                    </div>
                 </div>
-
-                <!--<div class="quelibox quecheked"><label><input class="qeliint" type="radio" name="ti1" value="男"/><span class="spanlab"><span
-                        class="spans">A. </span>师傅师傅的师傅师傅的师傅师傅的师傅师傅师傅的第三</span></label>
-                </div>-->
 
                 {foreach $vo.options_list as $k=>$v}
                 <div class="quelibox" data-a_id="{$vo.id}" data-a_v="{$v}"><label><input class="qeliint" type="radio" name="ti1[]"/><span class="spanlab"><span class="spans">{$k}、
