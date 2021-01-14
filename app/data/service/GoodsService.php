@@ -121,7 +121,7 @@ class GoodsService extends Service
      */
     public function getCateLevel(): int
     {
-        return 2;
+        return 1;
     }
 
 }

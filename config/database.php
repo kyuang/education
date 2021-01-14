@@ -28,17 +28,13 @@ return [
             // 数据库类型
             'type'            => 'mysql',
             // 服务器地址
-            //'hostname'        => '127.0.0.1',
-            'hostname'        => 'test.ezhangxiu.com',
+            'hostname'        => '127.0.0.1',
             // 数据库名
-            //'database'        => 'admin_v6',
-            'database'        => 'ff_edu',
+            'database'        => 'hd_as',
             // 用户名
-            //'username'        => 'admin_v6',
-            'username'        => 'easy',
+            'username'        => 'root',
             // 密码
-            //'password'        => 'FbYBHcWKr2',
-            'password'        => 'easytest1234',
+            'password'        => '123456a',
             // 端口
             'hostport'        => '3306',
             // 数据库连接参数

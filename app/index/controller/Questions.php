@@ -63,7 +63,7 @@ class Questions extends CommonController
             return easy_tip('参数错误！', ['code' => 1, 'url' => url('questions/index'), 'seconds' => 5]);
         }
         //查询所有试卷数量
-        $data_list = $this->app->db->name('DataQuestionsGroup')->where(['cate_id' => $cate_id, 'status' => 1, 'deleted' => 0])->order('id desc')->page($page, $this->page_size)->select()->toArray();
+        $data_list = $this->app->db->name('DataQuestionsGroup')->where(['cate_id' => $cate_id, 'status' => 1, 'deleted' => 0])->order('id asc')->page($page, $this->page_size)->select()->toArray();
         $crm_info = $this->crm_info;
         $uid = $crm_info['id'];
         foreach ($data_list as $key => &$item) {

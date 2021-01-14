@@ -13,9 +13,30 @@
 
     <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/swiper.min.css"/>
-
     {block name="header"}{/block}
-    {block name="style"}{/block}
+    {block name="style"}
+    {/block}
+    <style type="text/css">
+        /* 在线答题 */
+        .online_queans{
+            position: fixed;
+            right: 0;
+            top:80% ;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            background: linear-gradient(to bottom right,#3c7aff,#98c0ff);
+            font-size: 0.2rem;
+            text-align: center;
+            /* line-height: 0.8rem; */
+            overflow: hidden;
+            min-width: 40px;
+            min-height: 40px;
+            padding-top: 0.11rem;
+            box-sizing: border-box;
+            color: #fff;
+        }
+    </style>
 </head>
 <body class="layui-layout-body">
 {block name='body'}
@@ -75,6 +96,10 @@
             </a>
         </div>
     </div>
+    <!-- 在线答题 -->
+
+    <a class="online_queans" href="{:url('index/questions/index')}">在线<br>答题</a>
+
     {/if}
 </div>
 {/block}
