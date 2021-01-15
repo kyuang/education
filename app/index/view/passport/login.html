@@ -41,7 +41,7 @@
 {block name='content'}
 <div class="outbox backchange">
     <!-- 课程列表li -->
-    <div class="loginbox">
+    <div class="loginbox" style="min-height: 530px;">
         <div class="loginitop"></div>
         <!-- 登录 -->
         <form onsubmit="return false" id="p_form" method="post" action="{:url('index/passport/login')}">
@@ -104,7 +104,7 @@
     $('#p_form').submit(function () {
         var jump_url = '{$redirect_url}';
         if (!jump_url) {
-            jump_url = "{:url('index')}";
+            jump_url = "{:url('index/index')}";
         }
         var user_name = $('#user_name').val();
         var password = $('#password').val();
