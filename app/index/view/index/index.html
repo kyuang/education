@@ -62,70 +62,16 @@
         </div>
     </div>
     <!-- 图片广告 -->
-    <style>
-        .picadbox_new{
-            width: 100%;
-            padding: 0 0.38rem;
-            box-sizing: border-box;
-            overflow: hidden;
-            font-size: 12px;
-        }
-        .picadleftbox_new img{
-            width: 100%;
-            height:100%;
-        }
-        .picadleftbox_new{
-            float: left;
-            width: 35%;
-            height: 2rem;
-        }
-        .picadrightbox_new{
-            float: right;
-            width: 62%;
-            height: 2rem;
-        }
-        .picadrightbox_new{
-            font-size: 0.4rem;
-            margin-top: 0.15rem;
-            line-height: 0.4rem;
-            color: #9e9e9e;
-        }
-        .picadrightbox_new .picadrtop:first-child{
-            height: 0.6rem;
-            color: #555;
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
-        }
-        .picadrightbox_new .picadrtop:nth-child(2){
-            font-size: 0.3rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            line-height:0.4rem;
-            letter-spacing:0.04rem;
-        }
-
-    </style>
-
     {notempty name="article"}
     {volist name="article" id="vo" length='10'}
-    <div class="picadbox_new">
 
-        <div class="picadleftbox_new">
-            <a href="{:url('index/index/article')}?id={$vo.id}">
-                <img src="{$vo.cover}"></a>
+    <div class="picadbox">
+        <div class="picadleftbox">
+            <a href="{:url('index/index/article')}?id={$vo.id}"><img src="{$vo.cover}"></a>
         </div>
-
-        <div class="picadrightbox_new">
-            <div class="picadrtop">
-                <span>{$vo.name}</span>
-            </div>
-            <div class="picadrtop">
-                <span>{$vo.remark}</span>
-            </div>
+        <div class="picadrightbox">
+            <a href="#" class="picadrtop"><p class="y_indxeti">{$vo.name}</p></a>
+            <a href="#" class="picadrbot"><p class="y_indexp">{$vo.remark}</p></a>
         </div>
         <div class="clear"></div>
     </div>
