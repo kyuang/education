@@ -63,6 +63,12 @@
     </div>
     <!-- 图片广告 -->
     {notempty name="article"}
+    <div class="titlet_div">
+        <p class="titlep">本校热门文章</p>
+        <a href="{:url('index/article/index')}">
+            <span class="titlet_duo">更多>></span>
+        </a>
+    </div>
     {volist name="article" id="vo" length='10'}
 
     <div class="picadbox">
