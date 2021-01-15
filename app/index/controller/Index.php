@@ -39,7 +39,7 @@ class Index extends CommonController
         //广告
         $query = $this->_query('DataNewsItem');
         $query->like('mark',['mark'=>'首页']);
-        $query->where(['deleted' => 0])->order('sort desc,id desc')->limit(3);
+        $query->where(['deleted' => 0])->order('sort desc,id desc')->limit(10);
         $this->article = $query->query->select()->toArray();
 
         $this->notice = sysconf('notice');

@@ -290,3 +290,6 @@
 .classsmaboxr img{
 	max-height: 3.3rem;
 }
+.hide{
+	display: none;
+}

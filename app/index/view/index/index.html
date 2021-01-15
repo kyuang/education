@@ -62,7 +62,78 @@
         </div>
     </div>
     <!-- 图片广告 -->
-    <div class="picadbox">
+    <style>
+        .picadbox_new{
+            width: 100%;
+            padding: 0 0.38rem;
+            box-sizing: border-box;
+            overflow: hidden;
+            font-size: 12px;
+        }
+        .picadleftbox_new img{
+            width: 100%;
+            height:100%;
+        }
+        .picadleftbox_new{
+            float: left;
+            width: 35%;
+            height: 2rem;
+        }
+        .picadrightbox_new{
+            float: right;
+            width: 62%;
+            height: 2rem;
+        }
+        .picadrightbox_new{
+            font-size: 0.4rem;
+            margin-top: 0.15rem;
+            line-height: 0.4rem;
+            color: #9e9e9e;
+        }
+        .picadrightbox_new .picadrtop:first-child{
+            height: 0.6rem;
+            color: #555;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+        }
+        .picadrightbox_new .picadrtop:nth-child(2){
+            font-size: 0.3rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height:0.4rem;
+            letter-spacing:0.04rem;
+        }
+
+    </style>
+
+    {notempty name="article"}
+    {volist name="article" id="vo" length='10'}
+    <div class="picadbox_new">
+
+        <div class="picadleftbox_new">
+            <a href="{:url('index/index/article')}?id={$vo.id}">
+                <img src="{$vo.cover}"></a>
+        </div>
+
+        <div class="picadrightbox_new">
+            <div class="picadrtop">
+                <span>{$vo.name}</span>
+            </div>
+            <div class="picadrtop">
+                <span>{$vo.remark}</span>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    {/volist}
+    {/notempty}
+
+
+    <div class="picadbox hide">
         {notempty name="article"}
         <div class="picadleftbox">
             <a href="{:url('index/index/article')}?id={$article.0.id}"><img src="{$article.0.cover}"></a>
@@ -106,20 +177,10 @@
             {eq name="mod" value="0"}<div class="classlibox">{/eq}
             <a href="{:url('index/product/details')}?id={$vo.id}">
                 <div class="classsmaboxl">
-                    <img src="__ROOT__/customer/img/classpic.jpg">
-                    <p class="classname">零基础英语神速突破零基础英语神速突破</p>
-                    <p class="classjj">快速突破</p>
-                    <p class="classpri">￥<span>99</span></p>
-                    <p class="classyy">已预约: <span>3</span></p>
-                </div>
-            </a>
-            <a href="{:url('index/product/details')}?id={$vo.id}">
-                <div class="classsmaboxl">
-                    <img src="__ROOT__/customer/img/classpic.jpg">
-                    <p class="classname">零基础英语神速突破零基础英语神速突破</p>
-                    <p class="classjj">快速突破</p>
-                    <p class="classpri">￥<span>99</span></p>
-                    <p class="classyy">已预约: <span>3</span></p>
+                    <img src="{$vo.cover}">
+                    <p class="classname">{$vo.name}</p>
+                    <p class="classpri">￥<span>{$vo.price_selling}</span></p>
+                    <p class="classyy">已预约: <span>{$vo.stock_sales}</span></p>
                 </div>
             </a>
             {eq name="mod" value="1"} <div class="clear"></div>{/eq}
