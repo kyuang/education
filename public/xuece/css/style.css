@@ -1,0 +1,5 @@
+/*CSS初始化*/
+* {padding:0px; margin:0px; }
+/*body {background:#ccc; font-size:14px; color:#8e8e8e;}*/
+body {font-size:20px; font-family: "微软雅黑", Arial, "Arial Black", "宋体"}
+a {text-decoration:none;}

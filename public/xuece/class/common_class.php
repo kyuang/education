@@ -1,0 +1,1 @@
+<?php date_default_timezone_set('PRC'); //设置中国时区 ?>

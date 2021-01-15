@@ -1,0 +1,144 @@
+{extend name="common/common"}
+{block name='header'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/list.css">
+<link rel="stylesheet" type="text/css" href="__ROOT__/customer/css/search.css">
+<style>
+	.quelista{
+		display: block;
+		color: #757575;
+		background-color: #f1f1f1;
+		width: 100%;
+		box-sizing: border-box;
+		line-height: 0.56rem;
+		font-size: 0.26rem;
+		padding-left: 0.2rem;
+		padding-right: 0.2rem;
+		border-radius: 0.06rem;
+		margin-top: 0.3rem;
+	}
+	.liuyana{
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+		padding-right: 0.7rem;
+		position: relative;
+		margin-top: 0;
+	}
+	.listboxinner img{
+		max-height: 320px;
+	}
+	.liuyanlistbox a{
+		text-align: left;
+		color: #757575;
+	}
+	.liuyanpage a{
+		text-align: center;
+		color: #4f4f4f;
+	}
+	.liuyanpage{
+		width: 100%;
+		padding: 0.8rem;
+		box-sizing: border-box;
+		font-size: 0;
+		overflow: hidden;
+		font-size: 0.26rem;
+	}
+	.liuyanpage a{
+		padding: 0.08rem 0.16rem;
+		display: block;
+		border-radius: 0.1rem;
+	}
+	.liuyanpre{
+		float: left;
+		background-color: #e8e8e8;
+		color: #4f4f4f;
+	}
+	.liuyannext{
+		float: right;
+		background-color: #e8e8e8;
+		color: #4f4f4f;
+	}
+	.picadbox{
+		width: 100%;
+		padding: 0 0.38rem;
+		box-sizing: border-box;
+		margin-top: 0.3rem;
+	}
+	.picadleftbox{
+		float: left;
+		width: 3.3rem;
+		height: 4rem;
+	}
+	.picadleftbox a{
+		display: block;
+		width: 100%;
+		height: 100%;
+
+	}
+	.picadbox a img {
+		height: 100%;
+		width: 100%;
+	}
+	.picadrightbox {
+		float: right;
+		width: 3.3rem;
+		padding: 0 0.2rem;
+		height: 4rem;
+		box-sizing: border-box;
+	}
+</style>
+{/block}
+{block name='content'}
+<div class="seamain">
+	<div class="seasebox">
+		<form method="get" action="">
+		<div class="searchbox">
+			<input class="searinp" type="text" name="keyword" placeholder="请输入搜索内容" value="{:input('keyword','')}"/>
+			<img class="searchimg" src="__ROOT__/customer/img/sehui.jpg" />
+		</div>
+		<button type="submit" class="quxiao search">搜索</button>
+		</form>
+	</div>
+</div>
+
+<div class="outbox">
+	<!-- 课程列表li -->
+	{empty name="data_list"}
+		<div class="listbox">
+			<p class="quelista liuyana">没有更多记录了！</p>
+		</div>
+	{else}
+	{volist name="data_list" id="vo"}
+	<div class="picadbox">
+		<div class="picadleftbox">
+			<a href="{:url('index/index/article')}?id={$vo.id}"><img src="{$vo.cover}"></a>
+		</div>
+		<div class="picadrightbox">
+			<a href="#" class="picadrtop"><p class="y_indxeti">{$vo.name}</p></a>
+			<a href="#" class="picadrbot"><p class="y_indexp">{$vo.remark}</p></a>
+		</div>
+		<div class="clear"></div>
+	</div>
+		{/volist}
+		<div class="liuyanpage">
+			{if $page gt 1}
+			<a href="{:url('index/product/index')}?page={$page - 1}" class="liuyanpre">上一页</a>
+			{/if}
+			{if count($data_list) egt $page_size}
+			<a href="{:url('index/product/index')}?page={$page + 1}" class="liuyannext">下一页</a>
+			{/if}
+		</div>
+	{/empty}
+</div>
+{/block}
+{block name='script'}
+<script>
+	$('.listboxinner').on('click','.detail_item',function () {
+		var id = $(this).parents('.listboxinner').data('id');
+		location.href = "{:url('index/product/details')}?id="+id;
+	})
+
+
+</script>
+{/block}
+

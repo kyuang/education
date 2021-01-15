@@ -30,7 +30,7 @@ class Product extends CommonController
         $this->title = '课程列表';
 
         $page = $this->request->get('page', 1);
-        $map = ['deleted' => 0];
+        $map = ['deleted' => 0,'status'=>1];
         $data_list = $this->app->db->name('ShopGoods')->field(['*'])
             ->where($map)->order('sort desc,id desc')
             ->page($page, $this->page_size)

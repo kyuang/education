@@ -1,0 +1,33 @@
+<?php require_once './class/common_class.php';?>
+<?php require_once './class/top.class.php';?>
+<?php
+require_once './class/option.php';
+require_once './class/DAOMySQLi.class.php';
+$dao = DAOMySQLi::getSingleton($options);
+$sql="set names utf8";
+$dao->query($sql);
+?>
+<body>
+<?php require_once "./class/kong_class.php"; ?>
+<?php require_once "./class/nav.class.php";?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <span>祝大家：元宵节快乐！</span><br>
+			<span style="color:red">数学课上课时间：</span><br>
+			<span style="color:red">2月11日（正月初七) - 2月17日(正月十四)</span><br>
+            <span>请点击“<a href="kechengview.php">选择课程</a>”选课吧...</span>
+        </div>
+        <div class="col-md-12">
+            <img src="./img/2019ny1.jpg" class="img-responsive">
+        </div>
+    </div>
+</div>
+<?php require_once './class/footer_class.php';?>
+<?php require_once './tongji.php';?>
+<?php require_once './tongji1.php';?>
+<div class="container hidden-xs hidden-sm" >
+    <p><a href="./admin/login.php">.</a></p>
+</div>
+</body>
+</html>
