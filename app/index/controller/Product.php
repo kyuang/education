@@ -28,10 +28,15 @@ class Product extends CommonController
     public function index()
     {
         $this->title = '课程列表';
-
+		$keyword = trim(input('keyword'));
         $page = $this->request->get('page', 1);
         $map = ['deleted' => 0,'status'=>1];
-        $data_list = $this->app->db->name('ShopGoods')->field(['*'])
+		
+		$query = $this->app->db->name('ShopGoods')->field(['*']);
+        if (!empty($keyword)) {
+            $query = $query->where('name', 'like', "%{$keyword}%");
+        }
+        $data_list = $query
             ->where($map)->order('sort desc,id desc')
             ->page($page, $this->page_size)
             ->select()->toArray();
