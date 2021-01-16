@@ -46,7 +46,7 @@ class Index extends CommonController
         //商品
         $query = $this->_query('ShopGoods');
         $query->like('mark',['mark'=>'热门']);
-        $query->where(['deleted' => 0])->order('sort desc,id desc')->limit(4);
+        $query->where(['deleted' => 0,'status'=>1])->order('sort desc,id desc')->limit(4);
         $this->product = $query->query->select()->toArray();
         $this->fetch();
     }

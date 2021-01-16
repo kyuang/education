@@ -115,6 +115,12 @@ class RegisterService extends Service
         if (!empty($this->errors)) {
             return alert_info(1, $this->errors[0], $this->errors);
         }
+		$username=$this->data['username'];
+		$add_res = $this->app->db->name('DataUser')->where(['username'=>$username])->find();
+		if(!empty($add_res)){
+			return alert_info(1, '用户已存在');
+		}
+		
         $data = [
             'username'=>$this->data['username'],
             'password'=>md5($this->data['password']),
