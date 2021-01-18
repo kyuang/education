@@ -79,7 +79,7 @@ class Questions extends CommonController
         $this->assign('data_list', $data_list);
         $this->assign('selected', 4);
         $this->assign('page', $page);
-        $this->assign('cate_id',$cate_id);
+        $this->assign('cate_id', $cate_id);
         $this->fetch('questions/answers');
     }
 
@@ -134,7 +134,7 @@ class Questions extends CommonController
     private function getPrevGrade($group_id, $uid)
     {
         //获取上一题分数，不够80分，不允许答题！
-        $prev_info = $this->app->db->name('DataQuestionsGroup')->where('id', '<', $group_id)->where(['status' => 1, 'deleted' => 0])->find();
+        $prev_info = $this->app->db->name('DataQuestionsGroup')->where('id', '<', $group_id)->where(['status' => 1, 'deleted' => 0])->order('sort desc,id desc')->find();
         if (empty($prev_info)) {
             return alert_info(0, '通过！');
         }
